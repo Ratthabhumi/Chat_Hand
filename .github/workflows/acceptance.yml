@@ -1,0 +1,15 @@
+name: Windows local acceptance
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  local:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Validate local artifacts (not remote or provider E2E)
+        shell: powershell
+        run: ./scripts/Test-Repository.ps1

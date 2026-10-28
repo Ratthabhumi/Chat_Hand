@@ -1,5 +1,7 @@
 # Installation and operating instructions
 
+**V2:** device already Online; do not launch a duplicate. Read [V2 owner steps](V2_OWNER_STEPS.th.md) before changing access policy or performing a model trial. `Test-Repository.ps1` validates local artifacts; `.github/workflows/acceptance.yml` runs it on Windows CI. Existing Antigravity/OpenCode desktop apps were found, so no reinstall was attempted. The remaining text records the V1 procedure, not the current Offline diagnosis.
+
 No new MCP server, Inspector, DWB, Tunnel Client, service, startup item or npm package was installed. Reuse existing Codex and GitHub CLI. Sandbox is `sandbox/` inside this standalone repository; it contains only synthetic data.
 
 Run from this repository:

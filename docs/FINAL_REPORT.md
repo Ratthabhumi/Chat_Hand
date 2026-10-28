@@ -1,5 +1,7 @@
 # Final report
 
+**Historical V1 report. Current result: [V2_REPORT.md](V2_REPORT.md), dated 2026-10-29.** Device now Online; connector fixture read passed from Codex, directory denial failed. ChatGPT-web and independent-model acceptance remain pending.
+
 Observed 2026-10-28 (Asia/Bangkok). **PARTIAL / external remote-access blocker.**
 
 1. **Environment:** Windows 11 x64, Node 24.14.1, npm 11.11.0, Git 2.50.0.windows.1, Codex 0.165.0-alpha.1.2. GitHub authentication usable. Target repository was empty and public.

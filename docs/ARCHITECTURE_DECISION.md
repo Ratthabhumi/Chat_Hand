@@ -1,5 +1,11 @@
 # Architecture decision
 
+## V2 update — 2026-10-29
+
+Use two independent routes where verified: ordinary Chat + existing remote connector, and an independent-provider coding agent. Neither is fully accepted yet. Remote read works from Codex, but current directory restrictions fail. Antigravity/OpenCode desktop apps are already installed; evaluate those before adding software. Work shares Codex included allowance, so changing to Work is not a quota reset. See [V2 report](V2_REPORT.md).
+
+## Historical V1 decision — 2026-10-28
+
 **GO: A, existing Codex + GitHub + local tools. Remote extension remains BLOCKED.**
 
 | Option | Complexity / maintenance | Access / sessions | Cost / performance | Decision |
