@@ -1,5 +1,22 @@
 # Architecture decision
 
+## V3 owner decision — 2026-10-29
+
+DWB MCP Studio beta.16 + its managed OpenAI Secure MCP Tunnel is now the selected unified architecture. This supersedes the V2 preference; do not resume coding-agent comparisons. Preserve the existing Remote Desktop Commander as rollback, without changing its shared configuration or session.
+
+Installation is approved and completed locally, not approved for cloud acceptance by inference. DWB forwards process tools; filesystem denial does not contain shell access. Keep hosted Tunnel stopped until shell is disabled by a verified supported mechanism or an owner-approved OS boundary is established and tested. Dependency advisories must also be triaged. Current status PARTIAL.
+
+Future profiles are prepared as approval requirements, with **no production roots activated**:
+
+| Profile | Activation gate |
+|---|---|
+| ACASH | Read-only root approval, governance preserved, NO_REAL_ORDERS=true, capital USD 0.00; no live/paper/provider execution |
+| -SEED | Explicit isolated worktree, one writer, tests and PR |
+| EIMS | Sanitized diagnostics only; no customer credentials/configurations/device administration |
+| Agent OS | Separately approved narrow root; exclude memory, credentials and backups |
+
+One sandbox/worker, no installed skills, fallback policy ASK, no startup or automatic connection. Dashboard remains disconnected pending owner gates.
+
 ## V2 update — 2026-10-29
 
 Use two independent routes where verified: ordinary Chat + existing remote connector, and an independent-provider coding agent. Neither is fully accepted yet. Remote read works from Codex, but current directory restrictions fail. Antigravity/OpenCode desktop apps are already installed; evaluate those before adding software. Work shares Codex included allowance, so changing to Work is not a quota reset. See [V2 report](V2_REPORT.md).

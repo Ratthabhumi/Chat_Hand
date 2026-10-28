@@ -1,5 +1,15 @@
 # Research handoff (bounded scope)
 
+## V3 priority — owner selected DWB; no more alternative-agent research
+
+Installed official beta.16 (tag commit 212cb39512ef244283c7984ebede0f25e92fdd55), managed DC 0.2.50 and Tunnel 0.0.11. Local MCP file denial passed, including traversal/junction, but shell tools remain exposed and no OS boundary exists. Review a supported way to disable process/config-mutation tools in DWB/DC, or specify a tested restricted Windows identity/VM with minimal ACLs. Do not substitute prompt rules or Skills ASK for OS confinement. No cloud key was entered.
+
+Triage actual advisories in `evidence/v3-dependency-advisories.json`: core audit metadata=6 affected packages (2 high), worker=5 (3 high). Establish reachability, patched compatible versions and upstream-supported remediation. Do not run `npm audit fix` or replace managed components blindly. Compare Tunnel 0.0.11 vs 0.0.18 configuration/protocol requirements; version difference alone is not a vulnerability. The installer's version guard requires 0.0.11. Hosted compatibility remains unknown until credentialed testing.
+
+Review source DPAPI/key ACL/log redaction, configuration-mutation tools, shell process/environment access, junction race behavior and prompt-injection/tool-output trust. Retain the existing Remote rollback route. Primary sources: [pinned DWB source](https://github.com/sphakanin/dwb-mcp-studio-public/tree/v0.1.0-beta.16), [OpenAI Tunnel source](https://github.com/openai/tunnel-client), [official guide](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels). This is a targeted security/compatibility handoff, not a renewed architecture comparison.
+
+## Historical V1/V2 handoffs
+
 ## V2 priority — 2026-10-29
 
 Complete-prompt follow-up: verify OpenCode V2 migration/coexistence with installed Desktop 1.19.5 rather than assuming it is already V2. Official V2 docs distinguish `@opencode/cli` and standalone Windows builds. No upgrade was attempted. Antigravity existing UI exposes a pending restart/update and a missing selected workspace; research cannot confirm the owner's allowance, so prefer the exact owner action over another generic product search. Fixed benchmark weights and UNKNOWN rules are in [FALLBACK_COMPARISON.md](FALLBACK_COMPARISON.md).

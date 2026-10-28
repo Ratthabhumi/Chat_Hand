@@ -1,5 +1,19 @@
 # Final report
 
+## V3 current result — 2026-10-29
+
+**PARTIAL: isolated DWB installed; local file-policy tests pass; hosted access intentionally stopped.**
+
+Installed beta.16 to `%LOCALAPPDATA%\ChatHand\DWB-beta16`, managed worker 0.2.50, managed Tunnel 0.0.11. App data at `%LOCALAPPDATA%\DWB-MCP-Studio-ChatHand`. ZIP SHA-256 verified; unsigned launcher not treated as signed publisher proof. Used reviewed Setup backend/app scripts without an execution-policy override or elevation. Dashboard host is responding; no credential UI or ChatGPT plugin configured.
+
+One worker, explicit sandbox-only policy, zero installed skills (ASK fallback), startup/auto-connect disabled. Local broker/session/bind/read and outside/traversal/junction denial passed. Test broker drained/stopped. Shell tools are exposed, so OS confinement FAILS; DWB write tests, two-chat isolation and cloud reconnect were not attempted. Core/worker dependency audits report 6/5 affected packages respectively, pending reachability/remediation review. Do not enable the hosted tunnel on the strength of local filesystem denial.
+
+Existing Remote agent/config/authentication retained; first probe left tracked legacy file hashes unchanged. No production roots were activated or production repositories modified. Account entitlement, workspace associations, runtime key and real ordinary-Chat invocation remain owner gates. No new key, subscription, billing, firewall or startup persistence created.
+
+Owner steps: security review/OS isolation first, then personally provision/link the pilot Tunnel and enter restricted key in DWB, then complete ordinary-Chat acceptance. Details and runnable local operations are in [INSTALLATION.md](INSTALLATION.md), [SECURITY_REVIEW.md](SECURITY_REVIEW.md), [ACCEPTANCE_TESTS.md](ACCEPTANCE_TESTS.md), [OPERATIONS.md](OPERATIONS.md), and [ROLLBACK.md](ROLLBACK.md). Research handoff includes exact audit advisories. V2 coding-agent work is paused under the selected V3 architecture.
+
+## Historical V1/V2 report
+
 **Historical V1 report. Current result: [V2_REPORT.md](V2_REPORT.md), dated 2026-10-29.** Device now Online; connector fixture read passed from Codex, directory denial failed. ChatGPT-web and independent-model acceptance remain pending.
 
 Observed 2026-10-28 (Asia/Bangkok). **PARTIAL / external remote-access blocker.**

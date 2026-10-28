@@ -7,6 +7,16 @@ try {
     Get-ChildItem evidence -Filter *.json -Recurse | ForEach-Object {
         $null = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
     }
+    Get-ChildItem scripts -Filter *.mjs | ForEach-Object {
+        & node --check $_.FullName
+        if ($LASTEXITCODE -ne 0) { throw "JavaScript syntax failed: $($_.Name)" }
+    }
+    Get-ChildItem scripts -Filter *.ps1 | ForEach-Object {
+        $parseErrors = $null
+        $tokens = $null
+        $null = [Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref]$tokens, [ref]$parseErrors)
+        if ($parseErrors.Count) { throw "PowerShell syntax failed: $($_.Name)" }
+    }
     Get-ChildItem README.md,docs\*.md,benchmark\*.md | ForEach-Object {
         $document = $_
         foreach ($match in [regex]::Matches((Get-Content -LiteralPath $_.FullName -Raw), '\]\(([^)]+)\)')) {

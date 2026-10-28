@@ -1,5 +1,7 @@
 # ทำต่อโดยใช้โทเคนสั้น ๆ
 
+**ประวัติ V2 เท่านั้น: เจ้าของเลือก DWB ใน V3 แล้ว ใช้ [INSTALLATION.md](INSTALLATION.md) และ [OPERATIONS.md](OPERATIONS.md) แทน ไม่ทำ coding fallback ต่อในรอบ V3**
+
 ผลวันที่ 29 ตุลาคม 2026: เครื่อง Online และอ่าน hello.txt ผ่าน connector ได้แล้ว แต่ config ปัจจุบันไม่จำกัดโฟลเดอร์ จึงยังไม่ผ่าน pilot ที่ปลอดภัยตามขอบเขตที่กำหนด
 
 1. ในการตั้งค่า Desktop Commander เดิม ตรวจว่าใช้กับงาน/แชทอื่นใดบ้าง ก่อนจำกัด `allowedDirectories` ให้เป็น array ที่มี absolute path ของ `Chat_HAND\sandbox` เพียงรายการเดียวสำหรับ pilot นี้ อย่าใช้ `[]` เพราะหมายถึงเปิดทุก path ในรุ่นที่ตรวจ หากกระทบงานอื่น ให้แยกบัญชี OS หรือ agent สำหรับ pilot ก่อน ไม่เปลี่ยนของกลางทันที

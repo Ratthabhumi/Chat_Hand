@@ -1,5 +1,9 @@
 # Existing environment audit
 
+## V3 additions — 2026-10-29
+
+Installed DWB 0.1.0-beta.16 under local-app-data ChatHand/DWB-beta16, separate managed data DWB-MCP-Studio-ChatHand, managed DC 0.2.50 and Tunnel 0.0.11+8d55683. Doctor passed and Dashboard host responds. One worker, explicit sandbox root, no installed skills, startup/auto-connect false. Hosted tunnel stopped; no new credentials. See FINAL_REPORT.md for security/dependency gates. The inventory below predates this installation.
+
 Observed 2026-10-28, Asia/Bangkok. See `evidence/preflight.json` for the reproducible sanitized snapshot. RAM/process counts are transient.
 
 | Component | Observed evidence | Reuse / gap |

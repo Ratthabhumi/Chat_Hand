@@ -1,5 +1,34 @@
 # Manual operations and recovery
 
+## V3 DWB pilot (current)
+
+```powershell
+powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Status
+powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Dashboard
+powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Stop
+powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Restart
+```
+
+Dashboard opens the installed UI without connecting the hosted tunnel. Restart drains/stops this pilot and requests the Dashboard again; it does not submit credentials or establish cloud access. The app's per-install/data mutex prevents duplicate UI shells, and managed Tunnel start uses a lock/process identity check. No retry daemon added. Stop uses official DWB data-scoped process checks/drain and leaves the old Remote agent alone. No wildcard process kills.
+
+**Do not press Start MCP yet:** shell confinement and dependency triage remain open. After security/account acceptance, the owner enters credentials through built-in Tunnel configuration and uses Dashboard Start MCP / Stop MCP. Check status and perform a fresh tool call; readiness alone is insufficient. Do not expose screenshots containing key fields. Preferences keep Windows startup and auto-connect disabled.
+
+For local stdio tests only:
+
+```powershell
+$env:DWB_INSTALL_DIR = Join-Path $env:LOCALAPPDATA 'ChatHand\DWB-beta16'
+$env:DWB_DATA_DIR = Join-Path $env:LOCALAPPDATA 'DWB-MCP-Studio-ChatHand'
+$env:DWB_CONFIG_FILE = Join-Path $env:DWB_DATA_DIR 'config.json'
+node scripts/Test-DwbPilot.mjs
+powershell -NoProfile -File scripts/Dwb-Pilot.ps1 -Action Stop
+```
+
+The current probe deliberately reports the unresolved shell gate and exits 1. It uses only synthetic fixtures and no hosted Tunnel. If interrupted, inspect only the unique `sandbox/dwb-junction-*` link and `local-evidence/dwb-outside-*` scratch directory before removing exact generated items; do not follow junctions into another tree or recursively delete production paths.
+
+Recovery: one status/doctor inspection, then one manual restart after checking active work. Stop if the same error persists and record a sanitized error. No re-pairing/key rotation/reinstall loop. Optional non-elevated startup may be considered only after manual acceptance and explicit owner approval.
+
+## Historical V2 Remote operations (rollback route)
+
 No automatic startup is configured or approved. Do not create Task Scheduler jobs until manual Chat-host E2E, policy denial, reconnect and shutdown tests pass and the owner approves startup.
 
 ## Status

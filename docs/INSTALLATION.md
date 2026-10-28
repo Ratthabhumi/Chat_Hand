@@ -1,5 +1,34 @@
 # Installation and operating instructions
 
+## V3 installed pilot — 2026-10-29
+
+- Application: `%LOCALAPPDATA%\ChatHand\DWB-beta16`
+- DWB-managed data/config: `%LOCALAPPDATA%\DWB-MCP-Studio-ChatHand\config.json`
+- Managed worker: application `external\desktop-commander`, Desktop Commander 0.2.50
+- Managed Tunnel: application `external\tunnel-client\tunnel-client.exe`, 0.0.11+8d55683
+- Workspace: this checkout's absolute `sandbox` path; workerCap=1; base-policy allowlist contains exactly that nonempty path
+- Preferences: startWithWindows=false, connectOnStartup=false; installed skills=0, default policy ASK in reviewed source
+
+The official Windows ZIP was downloaded from the beta.16 GitHub release, checksum verified against both the companion file and GitHub metadata (`cd94f308829515f9a4e3d381c9f9266859124bfb47f47aeda9992377f0c19de2`), then extracted into a new application directory. The reviewed Setup backend `scripts/setup-install.ps1` was executed with a JSON request containing the existing sandbox path and workerCap=1, and process-scoped DWB_DATA_DIR/DWB_CONFIG_FILE pointing to the new data directory. DWB itself installed its dependencies and managed components. No parallel manual server/tunnel was installed.
+
+For reproduction, use the same verified ZIP, fresh app/data directories, Node >=22.16 and the official Setup UI/backend. Do not overwrite an existing data directory or rerun setup blindly. Review new package/advisory results before execution. The managed installer pins worker 0.2.50 and Tunnel 0.0.11, verifies the Tunnel ZIP checksum and rejects different versions. No binary substitution was made.
+
+The bundled launcher is unsigned (Authenticode NotSigned); GitHub origin/checksum is provenance evidence, not a signed publisher identity. The inspected launcher source uses an execution-policy override. This run instead invoked the reviewed PowerShell backend/app scripts without an ExecutionPolicy override, administrator elevation, security-warning bypass or security-setting change. Setup succeeded under the existing account. No Windows warning was bypassed.
+
+Local `doctor.mjs` passed. The Dashboard host was launched and reports a responding window titled DWB Core Dashboard; no credential fields were entered. GUI element-level acceptance is not established by that process/window observation.
+
+**Owner next actions (Thai):**
+
+1. ยังไม่กด Start MCP: ให้ Research/ผู้ดูแลตรวจ advisory และจัดขอบเขต shell ก่อน เช่นบัญชี Windows สิทธิ์ต่ำหรือ VM ที่ตรวจ ACL จริง การจำกัด workspace อย่างเดียวไม่พอ การสร้างบัญชี/เปลี่ยน ACL ต้องได้รับอนุมัติแยก; ยังไม่ได้ทำในรอบนี้
+2. เมื่อ security gates ผ่านแล้ว ให้คุณล็อกอิน Platform เอง ยืนยัน organization/workspace และสิทธิ์ Tunnels Read+Manage สำหรับสร้าง กับ Read+Use สำหรับ runtime พร้อมสิทธิ์ Custom MCP ใน ChatGPT
+3. สร้าง Tunnel สำหรับ pilot และ dedicated runtime key สิทธิ์ขั้นต่ำ; ผูกกับ ChatGPT workspace ที่ถูกต้อง กรอก Tunnel ID/key ในหน้าตั้งค่า Tunnel ของ DWB เอง ห้ามส่ง key ในแชทหรือ Git
+4. เปิด ChatGPT Chat ปกติ เพิ่ม Custom MCP ผ่าน Tunnel เดียวกัน แล้วเรียก dwb_broker_status, dwb_session_status และ workspace bind ก่อนอ่าน hello.txt เก็บหลักฐาน host จริง
+5. ทดสอบ denial, shell containment, เขียน/อ่านกลับ/ลบไฟล์จำลอง, สองแชท และ reconnect/stop ตาม ACCEPTANCE_TESTS.md ก่อนอนุญาตข้อมูลจริง
+
+Current official [Tunnel guide](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels) describes account/workspace requirements. The managed 0.0.11 client exposes `doctor --help`; no credentialed health/readiness check was performed because a profile/key was not provisioned. Hosted compatibility remains unverified. Do not assume current upstream CLI/profile features all exist in 0.0.11.
+
+## Historical V1/V2 instructions
+
 **V2:** device already Online; do not launch a duplicate. Read [V2 owner steps](V2_OWNER_STEPS.th.md) before changing access policy or performing a model trial. `Test-Repository.ps1` validates local artifacts; `.github/workflows/acceptance.yml` runs it on Windows CI. Existing Antigravity/OpenCode desktop apps were found, so no reinstall was attempted. The remaining text records the V1 procedure, not the current Offline diagnosis.
 
 No new MCP server, Inspector, DWB, Tunnel Client, service, startup item or npm package was installed. Reuse existing Codex and GitHub CLI. Sandbox is `sandbox/` inside this standalone repository; it contains only synthetic data.
