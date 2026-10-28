@@ -12,7 +12,7 @@ Fresh DWB-managed worker homes/data were used. Legacy session/config file hashes
 
 The managed installer explicitly requires Tunnel 0.0.11. Upstream 0.0.18 release notes add features including AWS identity and opt-in loopback Harpoon behavior; differences are not proof of a security defect or drop-in compatibility. Local 0.0.11 version and doctor help worked. Actual hosted authentication/protocol compatibility awaits owner credentials and security acceptance.
 
-Reviewed DWB key code uses Windows ConvertFrom-SecureString (DPAPI by default) when remembering a key, and passes an environment reference in the profile rather than a literal key in argv/config. No key was entered, saved or logged by this work; runtime secret/log redaction and effective key-file ACLs therefore remain NOT TESTED. No startup entry, service, firewall rule or account change made. Installed skills=0; fallback ASK observed in source. Do not add AUTO third-party skills.
+Reviewed DWB key code uses Windows ConvertFrom-SecureString (DPAPI by default) when remembering a key, and passes an environment reference in the profile rather than a literal key in argv/config. No key was entered, saved or logged by this work; runtime secret/log redaction and effective key-file ACLs therefore remain NOT TESTED. No startup entry, service, firewall rule or account change made. The initial installation snapshot had zero skills; current state is five reviewed MANUAL/ASK packages plus two retained unreviewed MANUAL extras, documented below and in AGENT_SKILLS.md. Do not add AUTO third-party skills.
 
 ## V2 finding — 2026-10-29
 
