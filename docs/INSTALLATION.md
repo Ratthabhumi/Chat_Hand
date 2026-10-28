@@ -7,7 +7,7 @@
 - Managed worker: application `external\desktop-commander`, Desktop Commander 0.2.50
 - Managed Tunnel: application `external\tunnel-client\tunnel-client.exe`, 0.0.11+8d55683
 - Workspace: this checkout's absolute `sandbox` path; workerCap=1; base-policy allowlist contains exactly that nonempty path
-- Preferences: startWithWindows=false, connectOnStartup=false; installed skills=0, default policy ASK in reviewed source
+- Preferences: startWithWindows=false, connectOnStartup=false. Initial skill count was zero; current collection is five reviewed MANUAL/ASK packages plus two unreviewed extras forced MANUAL in defaults and overrides. See [AGENT_SKILLS.md](AGENT_SKILLS.md).
 
 The official Windows ZIP was downloaded from the beta.16 GitHub release, checksum verified against both the companion file and GitHub metadata (`cd94f308829515f9a4e3d381c9f9266859124bfb47f47aeda9992377f0c19de2`), then extracted into a new application directory. The reviewed Setup backend `scripts/setup-install.ps1` was executed with a JSON request containing the existing sandbox path and workerCap=1, and process-scoped DWB_DATA_DIR/DWB_CONFIG_FILE pointing to the new data directory. DWB itself installed its dependencies and managed components. No parallel manual server/tunnel was installed.
 

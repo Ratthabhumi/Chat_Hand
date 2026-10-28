@@ -10,6 +10,8 @@ Review source DPAPI/key ACL/log redaction, configuration-mutation tools, shell p
 
 ## Historical V1/V2 handoffs
 
+V3 Skills follow-up: reviewed five-package collection is now installed and local MANUAL/ASK protocol checks pass. Two other packages were found AUTO in defaults and workspace overrides, then forced MANUAL; installer origin remains unestablished. Review policy changes vs existing activation expiry and trust in client-supplied explicit_user_request/user_confirmed flags. These are workflow controls, not OS authorization. Ordinary Chat-host activation remains blocked behind the same shell/dependency/account gates; see [AGENT_SKILLS.md](AGENT_SKILLS.md).
+
 ## V2 priority — 2026-10-29
 
 Complete-prompt follow-up: verify OpenCode V2 migration/coexistence with installed Desktop 1.19.5 rather than assuming it is already V2. Official V2 docs distinguish `@opencode/cli` and standalone Windows builds. No upgrade was attempted. Antigravity existing UI exposes a pending restart/update and a missing selected workspace; research cannot confirm the owner's allowance, so prefer the exact owner action over another generic product search. Fixed benchmark weights and UNKNOWN rules are in [FALLBACK_COMPARISON.md](FALLBACK_COMPARISON.md).

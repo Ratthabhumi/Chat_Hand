@@ -16,6 +16,8 @@ Reviewed DWB key code uses Windows ConvertFrom-SecureString (DPAPI by default) w
 
 ## V2 finding — 2026-10-29
 
+V3 skills follow-up: five pinned/reviewed packages imported without running helpers. Local MCP consent tests caught two extra AUTO packages and AUTO workspace overrides; both defaults and overrides were changed MANUAL without deleting files. Origin unestablished; these extras were not reviewed/activated by this task. Prior delivered instructions are not proven revoked by policy changes. MANUAL/ASK protocol checks passed, but this does not prove model compliance, human-consent authenticity or shell confinement. See [AGENT_SKILLS.md](AGENT_SKILLS.md).
+
 Current Desktop Commander 0.3.1 `allowedDirectories` is an empty array. Installed filesystem code treats this as unrestricted. Actual remote read of a harmless outside-sandbox fixture succeeded: this FAILS the desired pilot boundary, not a demonstrated exploit of a configured restriction. No real secret was requested. The fixture was removed locally; remote writes were deferred. Central settings and running sessions were not changed. Shell confinement and ordinary-Chat host behavior remain unverified. A live connector call from Codex must not be labeled normal ChatGPT web acceptance.
 
 Existing Antigravity and OpenCode executables were identified from file metadata; metadata is not an authenticity audit or proof of provider access. No candidate model call made. Keep new credentials/billing and shared permission changes owner-controlled. Benchmark execution runs code under the user's OS account; inspect candidate diffs and isolate the workspace first.

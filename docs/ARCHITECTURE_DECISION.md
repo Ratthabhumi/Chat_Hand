@@ -15,7 +15,7 @@ Future profiles are prepared as approval requirements, with **no production root
 | EIMS | Sanitized diagnostics only; no customer credentials/configurations/device administration |
 | Agent OS | Separately approved narrow root; exclude memory, credentials and backups |
 
-One sandbox/worker, no installed skills, fallback policy ASK, no startup or automatic connection. Dashboard remains disconnected pending owner gates.
+One sandbox/worker, five reviewed MANUAL/ASK skills, two unreviewed retained extras forced MANUAL, no startup or automatic connection. Agent Skills belong to V3. Dashboard remains disconnected pending owner gates. See [AGENT_SKILLS.md](AGENT_SKILLS.md); skill workflow policy is not OS containment.
 
 ## V2 update — 2026-10-29
 

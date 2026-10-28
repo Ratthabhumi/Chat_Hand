@@ -24,3 +24,5 @@ powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Dashboard
 ```
 
 Dashboard opens the local UI only. Do not connect the hosted tunnel until the shell/security review and owner account steps pass.
+
+**Agent Skills are in V3:** five pinned/reviewed MANUAL/ASK packages installed; local MCP activation/denial checks passed. Two unreviewed extras found AUTO were retained and forced MANUAL. [Skills guide and exact owner Chat test](docs/AGENT_SKILLS.md). Real Chat-host activation remains pending; instruction delivery is not proof of model behavior or Tunnel E2E.

@@ -7,6 +7,17 @@ try {
     Get-ChildItem evidence -Filter *.json -Recurse | ForEach-Object {
         $null = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
     }
+    $skillLock = Join-Path $root 'config\dwb-skills.lock.json'
+    if (Test-Path -LiteralPath $skillLock) {
+        $lock = Get-Content -LiteralPath $skillLock -Raw | ConvertFrom-Json
+        if ($lock.skills.Count -ne 5) { throw 'Review changes to the five-skill collection.' }
+        foreach ($skill in $lock.skills) {
+            if ($skill.policy -notin @('manual','ask') -or $skill.commit -notmatch '^[a-f0-9]{40}$' -or $skill.mainSha256 -notmatch '^[a-f0-9]{64}$') { throw 'Invalid skill source pin or policy.' }
+        }
+        foreach ($skill in $lock.quarantinedExisting) {
+            if ($skill.policy -ne 'manual') { throw 'Unreviewed retained skills must remain MANUAL.' }
+        }
+    }
     Get-ChildItem scripts -Filter *.mjs | ForEach-Object {
         & node --check $_.FullName
         if ($LASTEXITCODE -ne 0) { throw "JavaScript syntax failed: $($_.Name)" }

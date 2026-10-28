@@ -29,6 +29,8 @@ Recovery: one status/doctor inspection, then one manual restart after checking a
 
 ## Historical V2 Remote operations (rollback route)
 
+For current V3 Skills, use [AGENT_SKILLS.md](AGENT_SKILLS.md): Dashboard Agent Skills shows the reviewed five-package MANUAL/ASK set plus two retained, unreviewed MANUAL extras. Local protocol tests use `node scripts/Test-DwbSkills.mjs` under the same isolated environment, followed by Dwb-Pilot.ps1 -Action Stop. Do not approve ASK requests or enable AUTO merely to make acceptance green.
+
 No automatic startup is configured or approved. Do not create Task Scheduler jobs until manual Chat-host E2E, policy denial, reconnect and shutdown tests pass and the owner approves startup.
 
 ## Status

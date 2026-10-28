@@ -6,7 +6,9 @@
 
 Installed beta.16 to `%LOCALAPPDATA%\ChatHand\DWB-beta16`, managed worker 0.2.50, managed Tunnel 0.0.11. App data at `%LOCALAPPDATA%\DWB-MCP-Studio-ChatHand`. ZIP SHA-256 verified; unsigned launcher not treated as signed publisher proof. Used reviewed Setup backend/app scripts without an execution-policy override or elevation. Dashboard host is responding; no credential UI or ChatGPT plugin configured.
 
-One worker, explicit sandbox-only policy, zero installed skills (ASK fallback), startup/auto-connect disabled. Local broker/session/bind/read and outside/traversal/junction denial passed. Test broker drained/stopped. Shell tools are exposed, so OS confinement FAILS; DWB write tests, two-chat isolation and cloud reconnect were not attempted. Core/worker dependency audits report 6/5 affected packages respectively, pending reachability/remediation review. Do not enable the hosted tunnel on the strength of local filesystem denial.
+One worker, explicit sandbox-only policy, startup/auto-connect disabled. Five pinned/reviewed skills installed: debugging ASK, TDD/verification/review reception/security best practices MANUAL. Local MCP MANUAL denial/explicit activation with exact instructions and ASK withholding/rejection passed. Two extra AUTO packages were retained and forced MANUAL in defaults and workspace overrides; origin unestablished. See [AGENT_SKILLS.md](AGENT_SKILLS.md). Actual Chat-host activation and model behavior remain unverified.
+
+Local broker/session/bind/read and outside/traversal/junction denial passed. Test broker drained/stopped. Shell tools remain exposed, so OS confinement FAILS; DWB write tests, two-chat isolation and cloud reconnect were not attempted. Core/worker audits reported 6/5 affected packages, pending review. Hosted Tunnel remains stopped.
 
 Existing Remote agent/config/authentication retained; first probe left tracked legacy file hashes unchanged. No production roots were activated or production repositories modified. Account entitlement, workspace associations, runtime key and real ordinary-Chat invocation remain owner gates. No new key, subscription, billing, firewall or startup persistence created.
 

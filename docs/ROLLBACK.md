@@ -10,6 +10,8 @@ If a key/tunnel is added later, owner must revoke that dedicated key in Platform
 
 ## Historical V1/V2 rollback
 
+V3 Skills rollback/removal is documented in [AGENT_SKILLS.md](AGENT_SKILLS.md). Only the five reviewed package imports and two retained packages' policy changes were performed in this step; no package was deleted. Do not restore AUTO policies for unreviewed packages without source review and explicit owner decision.
+
 No installed runtime, tunnel, credential, service, scheduled task or firewall rule was created by this work. No production repository rollback is needed.
 
 The local probe removes its own unique output file in finally. Successful cleanup is recorded in `evidence/local-probe.json`. If interrupted outside finally, inspect `sandbox/test-output` and remove only the matching synthetic `probe-*.txt` file after reviewing it. Do not recursively delete project folders.

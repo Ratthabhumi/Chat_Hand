@@ -15,7 +15,11 @@
 | Managed Tunnel version + doctor help | PASS: 0.0.11; no credentialed doctor/readiness claim |
 | Ordinary ChatGPT Chat -> Tunnel -> DWB | BLOCKED: owner account/secret steps and security gate |
 | Stop local test broker | PASS: official drain/stop, runtime status stopped |
-| No startup / installed AUTO skills | PASS for configured false preferences and zero installed skills; future installs require review |
+| No startup / current AUTO skills | Startup remains off; five reviewed MANUAL/ASK plus two retained extras forced MANUAL; effective pilot policy checked |
+| Local skills/pinned hashes | PASS: five reviewed packages |
+| Local MANUAL activation/denial | PASS: no request -> manual_only; explicit owner demo -> active, exact instructions |
+| Local ASK withholding/rejection | PASS: approval_required, then rejected/no instructions after synthetic local administrative rejection |
+| Actual Chat-host skill activation / model behavior | BLOCKED / NOT TESTED; local delivery is not host acceptance |
 | Legacy Remote session/config | PASS: unchanged during first DWB probe; old connector rechecked separately |
 | Dependency security | REVIEW REQUIRED: current audit core=6, worker=5 affected packages |
 
@@ -24,6 +28,8 @@ Reproduce using `Dwb-Pilot.ps1 -Action Status` and `Test-DwbPilot.mjs` with the 
 Hosted owner sequence after security review: broker/session status, bind sandbox, exact read, synthetic outside denial, shell boundary test in the isolated OS environment, then one unique create/read/delete, two-chat identity/workspace separation, reconnect and stop causing fresh calls to fail. Keep credentials out of evidence.
 
 ## Historical V1/V2 evidence
+
+The owner's nine completion gates remain open where only local/partial evidence exists: actual Chat-host Tunnel/read/skill calls BLOCKED, shell gate FAIL, DWB writes BLOCKED, two-chat/reconnect NOT TESTED. Local installation, skills and operations evidence do not imply overall COMPLETE.
 
 **Current V2 matrix: [V2_REPORT.md](V2_REPORT.md).** On 2026-10-29, device Online and remote connector read PASS from Codex; outside-sandbox denial FAIL; remote write and normal-Chat host acceptance pending. Evaluator self-tests/CI validate the checker, not any independent AI model. The table below is historical V1 evidence.
 
