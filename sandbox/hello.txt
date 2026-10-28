@@ -1,0 +1,1 @@
+Chat_Hand sandbox: synthetic data only. No production access authorized.

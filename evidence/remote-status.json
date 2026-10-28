@@ -1,0 +1,14 @@
+{
+  "observedDateLocal": "2026-10-28",
+  "timezone": "Asia/Bangkok",
+  "tool": "Remote Desktop Commander list_devices",
+  "toolResponseError": false,
+  "deviceCount": 1,
+  "onlineCount": 0,
+  "deviceStatus": "Offline",
+  "reportedAppVersion": "0.3.1",
+  "reportedLastSeen": "21h ago",
+  "fileInvocationAttempted": false,
+  "reason": "No online device; no retry or file call attempted",
+  "redaction": "Device name and identifier omitted from public evidence"
+}

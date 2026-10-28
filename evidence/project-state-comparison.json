@@ -1,0 +1,45 @@
+{
+  "observedUtc": "2026-10-28T15:19:56.6141800Z",
+  "unchanged": true,
+  "before": [
+    {
+      "name": "Acash",
+      "head": "a9f6ba5f57fe8aaeacacb937a1c835ebf8a97826",
+      "dirtyEntries": 0,
+      "gitStateDigest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "name": "-SEED",
+      "head": "b15f27d6ff41e24e9a5650e39e5c7fded58c6d06",
+      "dirtyEntries": 2,
+      "gitStateDigest": "bed66aeafb56fc8c93d39d04b583214231904dd84f5dc209f79905548d98ff6e"
+    },
+    {
+      "name": "EIMS",
+      "head": "8c26f035244aeff9eefb87c3ed16b1aaa8e307f8",
+      "dirtyEntries": 6,
+      "gitStateDigest": "f3e9ee6026059ab104f1b1862bf0dd65a1bb9aada1c74ec2165ec9a629689ae7"
+    }
+  ],
+  "after": [
+    {
+      "name": "Acash",
+      "head": "a9f6ba5f57fe8aaeacacb937a1c835ebf8a97826",
+      "dirtyEntries": 0,
+      "gitStateDigest": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "name": "-SEED",
+      "head": "b15f27d6ff41e24e9a5650e39e5c7fded58c6d06",
+      "dirtyEntries": 2,
+      "gitStateDigest": "bed66aeafb56fc8c93d39d04b583214231904dd84f5dc209f79905548d98ff6e"
+    },
+    {
+      "name": "EIMS",
+      "head": "8c26f035244aeff9eefb87c3ed16b1aaa8e307f8",
+      "dirtyEntries": 6,
+      "gitStateDigest": "f3e9ee6026059ab104f1b1862bf0dd65a1bb9aada1c74ec2165ec9a629689ae7"
+    }
+  ],
+  "scope": "HEAD, porcelain status and tracked diff only. Untracked file contents and private AgentOS tree not hashed."
+}

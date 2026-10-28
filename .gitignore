@@ -1,0 +1,11 @@
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.pfx
+node_modules/
+private/
+local-evidence/
+sandbox/test-output/*
+!sandbox/test-output/.gitkeep

@@ -1,0 +1,36 @@
+{
+    "observedUtc":  "2026-10-28T15:19:50.5690368Z",
+    "os":  "Microsoft Windows 11 Home Single Language",
+    "build":  "26200",
+    "architecture":  "64-bit",
+    "ramGB":  23.8,
+    "freeRamGB":  3.3,
+    "elevated":  false,
+    "node":  "v24.14.1",
+    "npm":  "11.11.0",
+    "git":  "git version 2.50.0.windows.1",
+    "codex":  "codex-cli 0.165.0-alpha.1.2",
+    "tunnelClientOnPath":  false,
+    "projects":  [
+                     {
+                         "name":  "Acash",
+                         "head":  "a9f6ba5f57fe8aaeacacb937a1c835ebf8a97826",
+                         "dirtyEntries":  0
+                     },
+                     {
+                         "name":  "-SEED",
+                         "head":  "b15f27d6ff41e24e9a5650e39e5c7fded58c6d06",
+                         "dirtyEntries":  2
+                     },
+                     {
+                         "name":  "EIMS",
+                         "head":  "8c26f035244aeff9eefb87c3ed16b1aaa8e307f8",
+                         "dirtyEntries":  6
+                     },
+                     {
+                         "name":  "AgentOS",
+                         "status":  "Directory exists but is not a Git checkout at its root; not searched recursively"
+                     }
+                 ],
+    "scope":  "No credential values, raw process arguments, config contents, or customer files collected"
+}
