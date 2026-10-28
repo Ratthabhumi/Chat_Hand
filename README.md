@@ -15,3 +15,5 @@ powershell -NoProfile -File .\scripts\Test-Repository.ps1
 The probe uses normal local filesystem access. It does not implement MCP, OS isolation, or a directory access policy. Keep production projects and secrets outside the remote pilot. No dependency install or administrator access is required.
 
 [Coding trial specification](benchmark/TASK.md): evaluate an independent model in a separate worktree. The starter intentionally fails; checker self-tests passing do not mean an AI trial passed. Windows CI checks only local artifacts.
+
+[Comparison and scoring](docs/FALLBACK_COMPARISON.md) · [Status/start/stop/recovery](docs/OPERATIONS.md). OpenCode 1.19.5 was found locally; V2 has not been installed or verified.

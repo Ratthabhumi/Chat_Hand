@@ -15,6 +15,12 @@ This supersedes the V1 Offline diagnosis, while preserving V1 evidence dated 202
 
 Synthetic coding task, eleven-case evaluator, evaluator self-tests, Windows CI workflow, repeatable repository validation, exact owner checklist and updated research handoff. Evaluator tests verify the checker using a reference and rejected counterexamples; they are NOT evidence that any fallback model passed.
 
+Follow-up after receiving the complete prompt: read Issue #1's research comment, reconfirmed Online and unrestricted empty allowlist, added [fixed-weight comparison](FALLBACK_COMPARISON.md), [manual operations](OPERATIONS.md) and credential-free local process status. OpenCode Desktop 1.19.5.0 is not verified OpenCode V2. No installer/upgrade run.
+
+Saved remote session file exists. Its ACL is inherited; a targeted search found zero Allow-read rules for Everyone, BUILTIN Users or Authenticated Users. This limited check does not establish encryption, complete effective permissions or log redaction; file contents were not read. Installed filesystem source includes realpath/junction resolution code, but no junction/traversal runtime test passed. Prompt injection and shell containment remain review/test items; tool output cannot grant authorization.
+
+Antigravity was subsequently launched using its existing app registration and observed after loading. Its UI exposes Restart to Update, and the selected pre-existing project displays Missing Folder. A model picker shows Claude Sonnet 4.6 (Thinking); available independent allowance and cost remain UNKNOWN. No prompt was sent, update applied, model changed, unrelated project opened or private conversation exported. The app is left open for owner review. This is a readiness observation, not proof that the app cannot run a newly selected workspace. Owner: review the pending update, open the separate benchmark worktree and confirm provider/allowance before one trial.
+
 ## Current acceptance
 
 | Requirement | Result |

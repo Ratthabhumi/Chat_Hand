@@ -9,7 +9,9 @@
 
 สำหรับ coding fallback:
 
-1. เปิด Antigravity ที่ติดตั้งอยู่ ล็อกอินด้วย Google ของคุณถ้าถูกถาม ตรวจ quota/แผนและเลือกโมเดล Google; อย่าเปิด billing เพื่อทดสอบโดยไม่ตั้งใจ
+เกณฑ์คะแนน 30/25/20/15/10 อยู่ใน [ตารางเปรียบเทียบ](FALLBACK_COMPARISON.md) ยังไม่มีผู้ชนะจนกว่าจะมีผลจริง OpenCode ที่พบเป็นรุ่น 1.19.5 ไม่ใช่ V2 ที่ยืนยันแล้ว ส่วนคำสั่ง status/start/stop แบบไม่เพิ่ม startup อยู่ใน [OPERATIONS.md](OPERATIONS.md)
+
+1. เปิด Antigravity เดิมไว้ให้แล้ว พบปุ่ม Restart to Update และ workspace เดิมขึ้น Missing Folder ให้ตรวจอัปเดตโดยบันทึกงานเดิมก่อน แล้วเลือก worktree ทดลองใหม่ตามด้านล่าง ไม่ต้องแก้ workspace อื่น ตรวจ quota/แผนและเลือก provider/model ที่แยกจาก OpenAI; อย่าเปิด billing เพื่อทดสอบโดยไม่ตั้งใจ รุ่นที่พบยังไม่ใช่ผล benchmark
 2. ใช้ branch V2 นี้ก่อนรันคำสั่งสร้าง worktree จาก repo โดยเปลี่ยนชื่อหากมีอยู่แล้ว:
 
 ```powershell
