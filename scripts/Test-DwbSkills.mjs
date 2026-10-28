@@ -52,6 +52,13 @@ try {
   assert.equal(active.status, 'active');
   assert.equal(createHash('sha256').update(active.instructions).digest('hex'), selected.mainSha256);
   report.tests.manualExplicitActivationExactInstructions = 'PASS';
+  report.manualInstructionDelivery = {};
+  for (const expected of lock.skills.filter(s => s.policy === 'manual')) {
+    const delivered = await call('skills', { action: 'activate', skill: expected.id, explicit_user_request: true });
+    assert.equal(delivered.status, 'active');
+    assert.equal(createHash('sha256').update(delivered.instructions).digest('hex'), expected.mainSha256);
+    report.manualInstructionDelivery[expected.id] = 'PASS: exact pinned instructions; no model/helper run';
+  }
   const ask = await call('skills', { action: 'activate', skill: 'systematic-debugging' });
   assert.equal(ask.status, 'approval_required');
   assert.equal(ask.instructions, undefined);

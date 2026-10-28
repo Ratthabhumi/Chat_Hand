@@ -1,5 +1,17 @@
 # Actual acceptance evidence
 
+## V3.1 current status
+
+Latest local path retest: FAIL (MCP timeout after 15s). Initial stop: DWB_UPGRADE_BUSY; no force-kill. Later status became idle and a final graceful stop was attempted only after that new evidence. Skill recheck PASS is **not** a policy-persistence-through-restart PASS. Hosted security/recovery remains unresolved. See v3.1-local-mcp.json and final status evidence.
+
+- Owner-reported Tunnel/key available; pilot profile/settings/key.dpapi absent at inspection. No credential was requested or read.
+- OS isolation: BLOCKED, owner confirmed no separate identity/VM and requested [manual setup steps](OWNER_ACCOUNT_SETUP.th.md). No OS change performed.
+- Server tool filter: not found in targeted installed sources; tool exposure gate unresolved, hosted NO-GO.
+- Dependency triage: installed versions/chains and primary GHSA fixed versions collected; supported patches/reachability tests still pending. No risk accepted.
+- Skills: original five pins retained; two MANUAL additions. Local exact instruction delivery verified for all six MANUAL skills; ASK withholding/rejection and effective policy checks pass. Policy drift was detected and restored once.
+- Media/custom-project skills: catalog/design only, no backend/model/runtime or production-root activation.
+- Real ordinary-Chat Tunnel/read/write/skills, two-session and hosted reconnect: BLOCKED/NOT TESTED. Do not count local protocol checks as a completed DoD item.
+
 ## V3 current acceptance — 2026-10-29
 
 | Test | Result / scope |

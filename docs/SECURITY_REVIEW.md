@@ -1,5 +1,11 @@
 # Security review and limits
 
+## V3.1 current gate
+
+Hosted NO-GO remains. Owner has Tunnel/key but no isolated Windows account/VM; owner elected to prepare one manually. No account, ACL, vendor source, managed version, credential, billing or startup change made. Targeted worker/server inspection and advisory reachability metadata are in [DEPENDENCY_TRIAGE.md](DEPENDENCY_TRIAGE.md). A standard account is not automatic filesystem/network/process confinement and does not remove MCP tools; both OS and server controls still need tests.
+
+Seven reviewed skills now loaded as MANUAL/ASK. Source pins for the original five preserved; additions are instruction-only threat-model/frontend-design packages with licenses retained locally. During fresh tests, five original defaults were AUTO and two retained extras ASK, with four differing workspace overrides. Origin not established. Eleven records were restored to the approved manifest once; no extra package activated or deleted. Client-supplied approval fields, delivered instructions and future source helpers remain trust boundaries, not OS controls.
+
 ## V3 installed pilot — 2026-10-29
 
 Release source/payload at tag beta.16 (`212cb39512ef244283c7984ebede0f25e92fdd55`) inspected for Setup downloads/version/checksum validation, path checks, worker-home isolation, startup preferences, key storage and broker forwarding. Review is targeted, not a complete independent audit. ZIP SHA-256 matched both release metadata and companion checksum. The launcher is unsigned; no certificate-backed publisher verification is claimed.

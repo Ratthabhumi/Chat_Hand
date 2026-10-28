@@ -1,5 +1,7 @@
 # Architecture decision
 
+V3.1 retains DWB + managed Tunnel + Agent Skills. No alternative-agent comparison or parallel transport installed. Owner has Tunnel/key; cloud remains NO-GO because OS/server containment and vulnerability disposition are unfinished. Owner will prepare a separate Windows identity; that is a prerequisite candidate, not an accepted security boundary. Seven reviewed instruction packages, catalog-only media and inactive project-specific designs do not change access authority.
+
 ## V3 owner decision — 2026-10-29
 
 DWB MCP Studio beta.16 + its managed OpenAI Secure MCP Tunnel is now the selected unified architecture. This supersedes the V2 preference; do not resume coding-agent comparisons. Preserve the existing Remote Desktop Commander as rollback, without changing its shared configuration or session.

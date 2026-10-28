@@ -1,5 +1,21 @@
 # Final report
 
+## V3.1 current result — 2026-10-29
+
+Latest retest limitation: local MCP path/security probe timed out (-32001, 15s), and initial graceful stop returned DWB_UPGRADE_BUSY. No new path PASS or successful restart is claimed. A subsequent skill recheck passed on the existing broker; it is not restart evidence. Later diagnostic showed zero workers/requests/queue, allowing one final graceful stop without force-kill. See current runtime/status artifacts. The previous policy/delivery passes and CI do not erase the timeout.
+
+**PARTIAL / hosted NO-GO.** Owner reports Tunnel/key already available; no request to share them and no new key/tunnel created. Local pilot inspection found no tunnel settings/profile/key.dpapi, with broker/Tunnel stopped. Owner confirmed no isolated Windows account/VM and requested preparation steps: [one Thai owner packet](OWNER_ACCOUNT_SETUP.th.md). No user/account/ACL/firewall/startup changes made.
+
+Inspected worker registration/dispatch and DWB routing; no supported filter found in the targeted files. OS standard-user preparation alone will not establish MCP tool exclusion or all host isolation. Core/worker packages unchanged. Added installed-version/dependency-chain/GHSA range-and-fix triage for all eleven affected package entries (13 primary advisories), with reachability uncertainty and no accepted risk or patch. See [DEPENDENCY_TRIAGE.md](DEPENDENCY_TRIAGE.md).
+
+Added only security-threat-model and frontend-design, MANUAL. Reviewed collection now seven, preserving original pins; six MANUAL packages return exact instructions over local MCP. Debugging ASK withholding/rejection checks pass. Detected policy drift and restored eleven default/override records once, then verified. Two retained extras stay MANUAL and unreviewed. No helper/model/media service or paid API run. See [catalog](SKILLS_CATALOG.md).
+
+Project-specific designs remain inactive; public instruction hashes recorded where root AGENTS.md was found, and missing/private context explicitly blocked. No production project mutated or exposed. Normal Chat read/write/Skill activation, two-chat sessions and hosted reconnect still lack evidence. Use [OPERATIONS.md](OPERATIONS.md); never press Start MCP merely because a key exists.
+
+## Historical V3 result
+
+Final V3.1 cleanup: after status showed zero active/queued work, one final graceful stop succeeded. Both broker and Tunnel are stopped in v3.1-final-status.json. Timeout/restart acceptance remains unresolved; no force kill or cloud start occurred.
+
 ## V3 current result — 2026-10-29
 
 **PARTIAL: isolated DWB installed; local file-policy tests pass; hosted access intentionally stopped.**

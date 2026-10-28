@@ -1,5 +1,7 @@
 # Manual operations and recovery
 
+V3.1: use the existing Status/Stop commands while security gates remain open. Owner already has credentials; leave them out of chat. [Account preparation packet](OWNER_ACCOUNT_SETUP.th.md) is the next owner action. Do not Start MCP, enable startup or assume a new standard account passes containment without tests. Seven reviewed skills are installed; exact instruction checks use the existing Test-DwbSkills.mjs and do not require a hosted Tunnel.
+
 ## V3 DWB pilot (current)
 
 ```powershell

@@ -1,0 +1,10 @@
+{
+  "observedDateLocal": "2026-10-29",
+  "host": "Local MCP stdio from Codex, NOT ordinary ChatGPT Chat",
+  "result": "FAIL: SDK request timeout -32001 after 15000ms; no new path/security PASS claimed",
+  "initialSafeStop": "BLOCKED: DWB_UPGRADE_BUSY; no force kill",
+  "subsequentSkillRecheck": "Local instruction/policy checks passed but not evidence of a restart",
+  "diagnostic": "Later status showed same pilot identity, zero attached sessions, workers, in-flight calls and queue; permits one final graceful stop attempt",
+  "finalGracefulStop": "PASS after idle diagnostic: broker and tunnel stopped; no force kill. This does not resolve the MCP timeout.",
+  "historicalEvidence": "Earlier denial passes in v3-local-mcp.json do not erase this timeout"
+}

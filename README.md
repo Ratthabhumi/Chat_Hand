@@ -26,3 +26,5 @@ powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Dashboard
 Dashboard opens the local UI only. Do not connect the hosted tunnel until the shell/security review and owner account steps pass.
 
 **Agent Skills are in V3:** five pinned/reviewed MANUAL/ASK packages installed; local MCP activation/denial checks passed. Two unreviewed extras found AUTO were retained and forced MANUAL. [Skills guide and exact owner Chat test](docs/AGENT_SKILLS.md). Real Chat-host activation remains pending; instruction delivery is not proof of model behavior or Tunnel E2E.
+
+**V3.1 update:** seven reviewed instruction packages now installed (add MANUAL threat-model and frontend-design); original five pins preserved. [Coverage/backend catalog](docs/SKILLS_CATALOG.md), [dependency triage](docs/DEPENDENCY_TRIAGE.md), and [one owner account-preparation packet in Thai](docs/OWNER_ACCOUNT_SETUP.th.md). Owner already has Tunnel/key; do not create or share another key. Pilot profile/credential setup and OS/server gates remain unverified, so cloud stays stopped.

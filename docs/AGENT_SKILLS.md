@@ -1,5 +1,9 @@
 # Agent Skills are part of V3
 
+**Current V3.1:** reviewed collection is now seven. Add security-threat-model and frontend-design, both MANUAL, with pinned source/licenses and exact instruction delivery verified locally. The original five listed below retain their versions. Latest result: [v3.1 skills evidence](../evidence/v3.1-skills-local.json); [coverage and limits](SKILLS_CATALOG.md). No media backend, model behavior or ordinary-Chat invocation is implied.
+
+V3.1 detected a later policy drift: original five were AUTO, extras ASK, with four differing workspace overrides. Origin was not established. Eleven default/override records were restored once to the owner's MANUAL/ASK manifest, then tested. The recovery command initially omitted DWB_INSTALL_DIR and did not run the probe; the command environment was corrected without reinstalling or further policy retries. Source pins were unchanged. Keep the Dashboard policy settings stable during acceptance; do not silently loop if another writer changes them again.
+
 Five reviewed packages are installed in the isolated DWB library. Sources, commits, policy and hashes are in [the manifest](../config/dwb-skills.lock.json). [Local MCP evidence](../evidence/v3-skills-local.json) is distinct from ordinary-Chat acceptance.
 
 | Package | Policy | Scope |

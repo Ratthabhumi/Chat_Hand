@@ -1,0 +1,21 @@
+{
+  "statusMeaning": "AVAILABLE means exact source path found in a pinned GitHub tree, not executable readiness. Only lockfile packages are installed/reviewed. Unselected source/license/dependency reviews remain incomplete.",
+  "sources": {
+    "superpowers": {"repository": "obra/superpowers", "commit": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b", "pathPrefix": "skills/"},
+    "openai": {"repository": "openai/skills", "commit": "49f948faa9258a0c61caceaf225e179651397431", "pathPrefix": "skills/.curated/"},
+    "anthropic": {"repository": "anthropics/skills", "commit": "ca45fc496a3436251f191354091d557da31c15b5", "pathPrefix": "skills/"},
+    "remotion": {"repository": "remotion-dev/skills", "commit": "30d4553ecd46fbc5212fd0ff006ae43af522158b", "pathPrefix": "skills/"},
+    "dwb": {"repository": "sphakanin/dwb-mcp-studio-public", "commit": "212cb39512ef244283c7984ebede0f25e92fdd55", "pathPrefix": "skills/"}
+  },
+  "candidates": [
+    {"source":"superpowers","ids":["using-git-worktrees","writing-plans","requesting-code-review","finishing-a-development-branch","brainstorming"],"availability":"AVAILABLE","installed":false,"compatibility":"BLOCKED: shell/subagent/runtime dependencies and cross-skill workflow need review; do not imply a Codex subagent tool exists in DWB","licenseReview":"Repository MIT identified; individual supporting-file review pending"},
+    {"source":"openai","ids":["security-threat-model"],"availability":"AVAILABLE","installed":true,"verified":"Local MANUAL activation/exact instruction delivery; no threat model generated","licenseReview":"Apache-2.0 included in installed package"},
+    {"source":"anthropic","ids":["frontend-design"],"availability":"AVAILABLE","installed":true,"verified":"Local MANUAL activation/exact instruction delivery; no UI/model/backend execution","licenseReview":"Apache-2.0 included in installed package"},
+    {"source":"openai","ids":["openai-docs","playwright","screenshot"],"availability":"AVAILABLE","installed":false,"compatibility":"BLOCKED: verify required docs/browser/OS/CLI tools in DWB and resolve shell security first","licenseReview":"Not completed for unselected packages"},
+    {"source":"anthropic","ids":["canvas-design","algorithmic-art","mcp-builder"],"availability":"AVAILABLE","installed":false,"compatibility":"CATALOG ONLY: review scripts, fonts/assets, dependencies, licenses and actual Windows tool support","licenseReview":"Not completed; do not assume all Anthropic packages share one license"},
+    {"source":"remotion","ids":["remotion-best-practices","remotion-create","remotion-render","remotion-captions"],"availability":"AVAILABLE","installed":false,"compatibility":"CATALOG ONLY: requires reviewed React/Remotion/render/browser/font setup; programmatic video, not generative inference","licenseReview":"Not completed; no renderer or runtime installed"},
+    {"source":"dwb","ids":["comfyui-setup"],"availability":"AVAILABLE in installed DWB release payload","installed":false,"compatibility":"BLOCKED: explicit owner GPU/model/disk/runtime approval and isolated execution; no backend/model downloaded","licenseReview":"Source-level package/dependency review pending"},
+    {"source":"openai","ids":["speech","transcribe"],"availability":"AVAILABLE","installed":false,"compatibility":"BLOCKED: separate Audio API/tool credentials, privacy, billing/cost and runtime review; Tunnel key is not automatically authorized","licenseReview":"Not completed for unselected packages"},
+    {"source":"openai","ids":["imagegen"],"pathPrefixOverride":"skills/.system/","availability":"AVAILABLE","installed":false,"compatibility":"BLOCKED: Codex image_gen is not a DWB tool. An owner-approved Images API or isolated ComfyUI backend needs separate credentials/cost/runtime verification","licenseReview":"Not completed for unselected package"}
+  ]
+}

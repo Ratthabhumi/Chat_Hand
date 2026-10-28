@@ -1,5 +1,9 @@
 # Installation and operating instructions
 
+## V3.1 owner action
+
+Owner already has Tunnel/key; reuse after security acceptance, do not provision again. Current pilot inspection found no local settings/profile/key.dpapi. Owner has no isolated Windows environment and requested [these exact account-preparation steps](OWNER_ACCOUNT_SETUP.th.md). Do not open the primary profile to another user just to reuse its installation. No migration, credential entry or cloud start was performed. Skills collection now seven, not a new MCP stack; see [catalog](SKILLS_CATALOG.md).
+
 ## V3 installed pilot — 2026-10-29
 
 - Application: `%LOCALAPPDATA%\ChatHand\DWB-beta16`

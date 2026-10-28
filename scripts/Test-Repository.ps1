@@ -5,12 +5,23 @@ $root = Split-Path $PSScriptRoot -Parent
 Push-Location $root
 try {
     Get-ChildItem evidence -Filter *.json -Recurse | ForEach-Object {
-        $null = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
+        $jsonText = Get-Content -LiteralPath $_.FullName -Raw
+        if ([string]::IsNullOrWhiteSpace($jsonText)) { throw "Empty evidence JSON: $($_.Name)" }
+        $null = $jsonText | ConvertFrom-Json
     }
     $skillLock = Join-Path $root 'config\dwb-skills.lock.json'
+    Get-ChildItem config -Filter *.json -ErrorAction SilentlyContinue | ForEach-Object {
+        $null = Get-Content -LiteralPath $_.FullName -Raw | ConvertFrom-Json
+    }
     if (Test-Path -LiteralPath $skillLock) {
         $lock = Get-Content -LiteralPath $skillLock -Raw | ConvertFrom-Json
-        if ($lock.skills.Count -ne 5) { throw 'Review changes to the five-skill collection.' }
+        if ($lock.skills.Count -lt 5) { throw 'Preserve the original five-skill collection.' }
+        foreach ($id in @('systematic-debugging','test-driven-development','verification-before-completion','receiving-code-review','security-best-practices')) {
+            $original = @($lock.skills | Where-Object id -eq $id)
+            if ($original.Count -ne 1) { throw 'Missing or duplicated original skill.' }
+            $expectedCommit = if ($id -eq 'security-best-practices') { '49f948faa9258a0c61caceaf225e179651397431' } else { '2ce8aa15d05bd57213e6f746f953aafb7ded7a8b' }
+            if ($original[0].commit -ne $expectedCommit) { throw 'Original skill source pin changed; review required.' }
+        }
         foreach ($skill in $lock.skills) {
             if ($skill.policy -notin @('manual','ask') -or $skill.commit -notmatch '^[a-f0-9]{40}$' -or $skill.mainSha256 -notmatch '^[a-f0-9]{64}$') { throw 'Invalid skill source pin or policy.' }
         }

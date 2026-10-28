@@ -58,11 +58,14 @@ try {
   report.tests.writeReadbackDelete = 'BLOCKED: do not proceed past unresolved shell/security gate';
   report.tests.chatHostTunnel = 'BLOCKED: owner credentials, permissions and shell boundary required';
   report.tests.twoChatSessions = 'NOT TESTED';
+} catch (error) {
+  report.tests.operationFailure = `ERROR: local MCP ${error.code || error.name || 'failure'}; unfinished checks not accepted`;
+  process.exitCode = 1;
 } finally {
   await client.close().catch(() => {});
   if (fs.existsSync(junction)) fs.rmdirSync(junction);
   fs.unlinkSync(outsideFile);
   fs.rmdirSync(outside);
+  console.log(JSON.stringify(report, null, 2));
 }
-console.log(JSON.stringify(report, null, 2));
 if (Object.values(report.tests).some(value => /^(FAIL|ERROR)/.test(value))) process.exitCode = 1;

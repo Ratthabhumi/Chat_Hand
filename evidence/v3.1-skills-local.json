@@ -1,0 +1,59 @@
+{
+  "observedUtc": "2026-10-28T19:59:34.839Z",
+  "host": "Local MCP stdio from Codex; NOT ordinary ChatGPT Chat",
+  "tests": {
+    "unreviewedExistingSkillsNotAuto": "PASS: defaults and pilot effective policy MANUAL",
+    "installedCollectionAndPolicies": "PASS",
+    "manualWithoutExplicitRequestDenied": "PASS",
+    "manualExplicitActivationExactInstructions": "PASS",
+    "askWithholdsInstructions": "PASS",
+    "askRejectedRequestDenied": "PASS (synthetic local administrative rejection)"
+  },
+  "skills": [
+    {
+      "id": "systematic-debugging",
+      "policy": "ask",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "test-driven-development",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "verification-before-completion",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "receiving-code-review",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "security-best-practices",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "security-threat-model",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    },
+    {
+      "id": "frontend-design",
+      "policy": "manual",
+      "pinnedHash": "MATCH"
+    }
+  ],
+  "cloudSkillActivation": "BLOCKED: hosted security/account gates remain",
+  "behavioralEffectiveness": "NOT TESTED: no model execution or helper execution",
+  "manualInstructionDelivery": {
+    "test-driven-development": "PASS: exact pinned instructions; no model/helper run",
+    "verification-before-completion": "PASS: exact pinned instructions; no model/helper run",
+    "receiving-code-review": "PASS: exact pinned instructions; no model/helper run",
+    "security-best-practices": "PASS: exact pinned instructions; no model/helper run",
+    "security-threat-model": "PASS: exact pinned instructions; no model/helper run",
+    "frontend-design": "PASS: exact pinned instructions; no model/helper run"
+  }
+}

@@ -1,5 +1,13 @@
 # Research handoff (bounded scope)
 
+## V3.1 exact remaining research
+
+Use [dependency triage](DEPENDENCY_TRIAGE.md) and its JSON: eleven affected package entries now include installed versions/chains and thirteen fetched primary GHSA records with fixed-version metadata. Establish advisory-specific reachable input/resource behavior and supported patches without changing DC 0.2.50/Tunnel 0.0.11 blindly. Targeted source scan found direct sharp use in worker PDF image extraction; zod tool validation needs malformed-input/resource tests; body-parser/hono HTTP reachability remains unknown.
+
+Find an upstream-supported DWB/DC tool allowlist that covers listing AND dispatch, config mutation, resource routes and process APIs. No hook found in inspected beta.16 forwarding/tunnel-mcp entry. Do not implement an undocumented loader injection or rewrite a generated profile on every Start. Owner is preparing a standard Windows identity; specify exact synthetic ACL/environment/process/network checks and whether a VM is necessary. A standard account alone does not satisfy server tool exclusion.
+
+Seven reviewed instruction packages are installed; other candidate paths/pins and missing tool/backend/license reviews are in [SKILLS_CATALOG.md](SKILLS_CATALOG.md). Do not turn catalog availability into installed or functional media claims. No GPU/model download, paid API, production root or custom project skill activation occurred. Owner has Tunnel/key already, so do not research creation as if missing; association/entitlement and secure local entry still need owner verification after gates.
+
 ## V3 priority — owner selected DWB; no more alternative-agent research
 
 Installed official beta.16 (tag commit 212cb39512ef244283c7984ebede0f25e92fdd55), managed DC 0.2.50 and Tunnel 0.0.11. Local MCP file denial passed, including traversal/junction, but shell tools remain exposed and no OS boundary exists. Review a supported way to disable process/config-mutation tools in DWB/DC, or specify a tested restricted Windows identity/VM with minimal ACLs. Do not substitute prompt rules or Skills ASK for OS confinement. No cloud key was entered.

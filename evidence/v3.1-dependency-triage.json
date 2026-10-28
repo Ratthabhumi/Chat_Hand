@@ -1,0 +1,578 @@
+{
+  "observedUtc": "2026-10-28T19:57:34.828Z",
+  "inputs": "Cached original npm audits, current installed package files/npm dependency chains, and freshly fetched primary GHSA fixed-version metadata. Not a fresh npm audit.",
+  "rows": [
+    {
+      "component": "core",
+      "package": "body-parser",
+      "severity": "high",
+      "installed": [
+        {
+          "location": "node_modules/body-parser",
+          "version": "2.3.0"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "express@5.2.1",
+          "body-parser@2.3.0"
+        ]
+      ],
+      "npmAffectedRange": "2.0.0 - 2.3.0",
+      "advisories": [
+        {
+          "id": "GHSA-27r3-jxmh-p828",
+          "url": "https://github.com/advisories/GHSA-27r3-jxmh-p828",
+          "title": "body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "2.4.0",
+              "package": "body-parser",
+              "range": ">= 2.0.0, < 2.4.0"
+            },
+            {
+              "fixed": "1.20.9",
+              "package": "body-parser",
+              "range": "< 1.20.9"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": true,
+      "reachability": "Transitive HTTP middleware present; no direct DWB src import found in targeted scan. Full dynamic/HTTP reachability UNKNOWN, not accepted safe.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "core",
+      "package": "fast-uri",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/fast-uri",
+          "version": "3.1.8"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "ajv@8.20.0",
+          "fast-uri@3.1.8"
+        ]
+      ],
+      "npmAffectedRange": "3.0.0 - 3.1.8",
+      "advisories": [
+        {
+          "id": "GHSA-w74x-v6f9-j3xg",
+          "url": "https://github.com/advisories/GHSA-w74x-v6f9-j3xg",
+          "title": "fast-uri vulnerable to URI scheme spoofing via percent-encoded scheme decoding",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "2.4.8",
+              "package": "fast-uri",
+              "range": "< 2.4.8"
+            },
+            {
+              "fixed": "3.1.9",
+              "package": "fast-uri",
+              "range": ">= 3.0.0, < 3.1.9"
+            },
+            {
+              "fixed": "4.2.3",
+              "package": "fast-uri",
+              "range": ">= 4.0.0, < 4.2.3"
+            }
+          ]
+        },
+        {
+          "id": "GHSA-xhq7-xmqj-769h",
+          "url": "https://github.com/advisories/GHSA-xhq7-xmqj-769h",
+          "title": "fast-uri vulnerable to improper path equivalence in relative reference normalization",
+          "severity": "low",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "2.4.8",
+              "package": "fast-uri",
+              "range": "< 2.4.8"
+            },
+            {
+              "fixed": "3.1.9",
+              "package": "fast-uri",
+              "range": ">= 3.0.0, < 3.1.9"
+            },
+            {
+              "fixed": "4.2.3",
+              "package": "fast-uri",
+              "range": ">= 4.0.0, < 4.2.3"
+            }
+          ]
+        },
+        {
+          "id": "GHSA-wjr9-j795-jxcr",
+          "url": "https://github.com/advisories/GHSA-wjr9-j795-jxcr",
+          "title": "fast-uri vulnerable to host confusion via unchecked WHATWG host canonicalization",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "2.4.8",
+              "package": "fast-uri",
+              "range": ">= 2.4.2, < 2.4.8"
+            },
+            {
+              "fixed": "3.1.9",
+              "package": "fast-uri",
+              "range": ">= 3.1.3, < 3.1.9"
+            },
+            {
+              "fixed": "4.2.3",
+              "package": "fast-uri",
+              "range": ">= 4.0.1, < 4.2.3"
+            }
+          ]
+        },
+        {
+          "id": "GHSA-333x-w4r6-6crp",
+          "url": "https://github.com/advisories/GHSA-333x-w4r6-6crp",
+          "title": "fast-uri vulnerable to scheme injection via an unescaped first-segment colon in suffix references",
+          "severity": "low",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "2.4.8",
+              "package": "fast-uri",
+              "range": "< 2.4.8"
+            },
+            {
+              "fixed": "3.1.9",
+              "package": "fast-uri",
+              "range": ">= 3.0.0, < 3.1.9"
+            },
+            {
+              "fixed": "4.2.3",
+              "package": "fast-uri",
+              "range": ">= 4.0.0, < 4.2.3"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": true,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "core",
+      "package": "hono",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/hono",
+          "version": "4.13.7"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "@hono/node-server@2.1.1",
+          "hono@4.13.7"
+        ],
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "hono@4.13.7"
+        ]
+      ],
+      "npmAffectedRange": "4.12.4 - 4.13.10",
+      "advisories": [
+        {
+          "id": "GHSA-5r4p-p66f-jhc7",
+          "url": "https://github.com/advisories/GHSA-5r4p-p66f-jhc7",
+          "title": "Hono: `serveStatic` decodes the request path a second time, leading to bypass of middleware on static paths",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "4.13.11",
+              "package": "hono",
+              "range": ">= 4.12.4, < 4.13.11"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": true,
+      "reachability": "Transitive middleware present; no direct DWB src import found in targeted scan. Full reachability UNKNOWN.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "core",
+      "package": "ip-address",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/ip-address",
+          "version": "10.7.3"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "express-rate-limit@8.7.0",
+          "ip-address@10.7.3"
+        ]
+      ],
+      "npmAffectedRange": "<=10.7.3",
+      "advisories": [
+        {
+          "id": "GHSA-rxp7-6hxx-x8q5",
+          "url": "https://github.com/advisories/GHSA-rxp7-6hxx-x8q5",
+          "title": "ip-address: Address6 matches a zone identifier in quadratic time ahead of its length limit, allowing a single long string to stall the process",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "10.7.4",
+              "package": "ip-address",
+              "range": "<= 10.7.3"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": true,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "core",
+      "package": "qs",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/qs",
+          "version": "6.16.0"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "express@5.2.1",
+          "body-parser@2.3.0",
+          "qs@6.16.0"
+        ],
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "express@5.2.1",
+          "qs@6.16.0"
+        ]
+      ],
+      "npmAffectedRange": "6.7.0 - 6.16.0",
+      "advisories": [
+        {
+          "id": "GHSA-6pq8-jhm2-2vcw",
+          "url": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw",
+          "title": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "6.16.1",
+              "package": "qs",
+              "range": ">= 6.7.0, <= 6.16.0"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": true,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "core",
+      "package": "zod",
+      "severity": "high",
+      "installed": [
+        {
+          "location": "node_modules/zod",
+          "version": "4.6.2"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "zod-to-json-schema@3.25.2",
+          "zod@4.6.2"
+        ],
+        [
+          "@modelcontextprotocol/sdk@1.32.1",
+          "zod@4.6.2"
+        ],
+        [
+          "@modelcontextprotocol/server@2.3.1",
+          "@modelcontextprotocol/core@2.3.1",
+          "zod@4.6.2"
+        ],
+        [
+          "@modelcontextprotocol/server@2.3.1",
+          "zod@4.6.2"
+        ],
+        [
+          "zod@4.6.2"
+        ]
+      ],
+      "npmAffectedRange": "<4.6.6",
+      "advisories": [
+        {
+          "id": "GHSA-mrhx-c7xc-m3w5",
+          "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+          "title": "Zod can exhaust memory while validating oversized constrained collections",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "4.6.6",
+              "package": "zod",
+              "range": "< 4.6.6"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": {
+        "name": "zod",
+        "version": "4.6.7",
+        "isSemVerMajor": false
+      },
+      "reachability": "MCP/worker schema validation dependency. Untrusted tool inputs may reach validation; advisory-specific oversized-collection behavior NOT TESTED.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "worker",
+      "package": "@wonderwhy-er/desktop-commander",
+      "severity": "high",
+      "installed": [
+        {
+          "location": "node_modules/@wonderwhy-er/desktop-commander",
+          "version": "0.2.50"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50"
+        ]
+      ],
+      "npmAffectedRange": "*",
+      "advisories": [],
+      "inheritedFrom": [
+        "exceljs",
+        "sharp",
+        "zod"
+      ],
+      "npmFixSuggestion": false,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "worker",
+      "package": "exceljs",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/exceljs",
+          "version": "4.4.0"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "exceljs@4.4.0"
+        ]
+      ],
+      "npmAffectedRange": ">=3.5.0",
+      "advisories": [],
+      "inheritedFrom": [
+        "uuid"
+      ],
+      "npmFixSuggestion": false,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "worker",
+      "package": "sharp",
+      "severity": "high",
+      "installed": [
+        {
+          "location": "node_modules/sharp",
+          "version": "0.34.5"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "sharp@0.34.5"
+        ]
+      ],
+      "npmAffectedRange": "<=0.35.5-rc.1",
+      "advisories": [
+        {
+          "id": "GHSA-f88m-g3jw-g9cj",
+          "url": "https://github.com/advisories/GHSA-f88m-g3jw-g9cj",
+          "title": "sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "0.35.0",
+              "package": "sharp",
+              "range": "< 0.35.0"
+            }
+          ]
+        },
+        {
+          "id": "GHSA-rgj7-g3m4-5g8c",
+          "url": "https://github.com/advisories/GHSA-rgj7-g3m4-5g8c",
+          "title": "sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "0.35.4",
+              "package": "sharp",
+              "range": "< 0.35.4"
+            }
+          ]
+        },
+        {
+          "id": "GHSA-wq5f-xc86-pv6w",
+          "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+          "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "0.35.5",
+              "package": "sharp",
+              "range": "< 0.35.5"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": false,
+      "reachability": "Worker dist/tools/pdf/extract-images.js dynamically imports sharp for PDF image conversion. Potential approved-file input path; malformed-input exploitability NOT TESTED.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "worker",
+      "package": "uuid",
+      "severity": "moderate",
+      "installed": [
+        {
+          "location": "node_modules/uuid",
+          "version": "8.3.2"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "exceljs@4.4.0",
+          "uuid@8.3.2"
+        ]
+      ],
+      "npmAffectedRange": "<11.1.1",
+      "advisories": [
+        {
+          "id": "GHSA-w5hq-g745-h8pq",
+          "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq",
+          "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+          "severity": "moderate",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "12.0.1",
+              "package": "uuid",
+              "range": ">= 12.0.0, < 12.0.1"
+            },
+            {
+              "fixed": "13.0.1",
+              "package": "uuid",
+              "range": ">= 13.0.0, < 13.0.1"
+            },
+            {
+              "fixed": "11.1.1",
+              "package": "uuid",
+              "range": "< 11.1.1"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": false,
+      "reachability": "Advisory-specific runtime/input reachability UNKNOWN; package presence alone is not an exploit.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    },
+    {
+      "component": "worker",
+      "package": "zod",
+      "severity": "high",
+      "installed": [
+        {
+          "location": "node_modules/zod",
+          "version": "3.25.76"
+        }
+      ],
+      "dependencyChains": [
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "@modelcontextprotocol/sdk@1.32.2",
+          "zod@3.25.76"
+        ],
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "md-to-pdf@5.2.5",
+          "puppeteer@25.16.0",
+          "chromium-bidi@157.0.8090-0",
+          "zod@4.6.7"
+        ],
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "zod-to-json-schema@3.25.2",
+          "zod@3.25.76"
+        ],
+        [
+          "@wonderwhy-er/desktop-commander@0.2.50",
+          "zod@3.25.76"
+        ]
+      ],
+      "npmAffectedRange": "<4.6.6",
+      "advisories": [
+        {
+          "id": "GHSA-mrhx-c7xc-m3w5",
+          "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+          "title": "Zod can exhaust memory while validating oversized constrained collections",
+          "severity": "high",
+          "affectedRangesAndFixes": [
+            {
+              "fixed": "4.6.6",
+              "package": "zod",
+              "range": "< 4.6.6"
+            }
+          ]
+        }
+      ],
+      "inheritedFrom": [],
+      "npmFixSuggestion": false,
+      "reachability": "MCP/worker schema validation dependency. Untrusted tool inputs may reach validation; advisory-specific oversized-collection behavior NOT TESTED.",
+      "remediation": "No changes made. Check compatible locked update with upstream DWB/DC maintainers; npm fix suggestion is not compatibility proof.",
+      "regressionRequired": "Preserve managed version contracts; rerun path/consent/session tests and advisory-specific malformed-input/resource tests inside an isolated OS environment."
+    }
+  ],
+  "hostedDecision": "NO-GO: shell/OS boundary absent; dependency exploitability and supported remediation unresolved",
+  "patchesApplied": 0,
+  "risksAccepted": []
+}

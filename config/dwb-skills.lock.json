@@ -56,6 +56,32 @@
       "mainSha256": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f",
       "installedContentHash": "7b3dae1ffc5434d890f3c65c8f552af52d0307fab3b35dec13013c9ca3844c4f",
       "fileCount": 13
+    },
+    {
+      "id": "security-threat-model",
+      "policy": "manual",
+      "repository": "openai/skills",
+      "commit": "49f948faa9258a0c61caceaf225e179651397431",
+      "sourcePath": "skills/.curated/security-threat-model",
+      "sourceUrl": "https://github.com/openai/skills/tree/49f948faa9258a0c61caceaf225e179651397431/skills/.curated/security-threat-model",
+      "mainSha256": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2",
+      "installedContentHash": "1283c0dd62a8104d9edda4583569b5d8510b4ddaa45120687c999250fd96bad2",
+      "fileCount": 5,
+      "license": "Apache-2.0",
+      "scope": "Instruction delivery only; no tool/backend/model execution verified"
+    },
+    {
+      "id": "frontend-design",
+      "policy": "manual",
+      "repository": "anthropics/skills",
+      "commit": "ca45fc496a3436251f191354091d557da31c15b5",
+      "sourcePath": "skills/frontend-design",
+      "sourceUrl": "https://github.com/anthropics/skills/tree/ca45fc496a3436251f191354091d557da31c15b5/skills/frontend-design",
+      "mainSha256": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "installedContentHash": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+      "fileCount": 2,
+      "license": "Apache-2.0",
+      "scope": "Instruction delivery only; no tool/backend/model execution verified"
     }
   ],
   "quarantinedExisting": [
