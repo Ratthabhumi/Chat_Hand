@@ -1,3 +1,21 @@
+# V3.3 — ตรวจ external ก่อนแก้ ไม่ติดตั้งซ้ำ
+
+ได้รับ diagnostic จริงแล้ว: external / ไม่มี result และ config / logSignals ว่าง สาเหตุยัง UNKNOWN ตรวจ source เพิ่มแล้วแต่ยังไม่ใช้สมมติฐานแทนหลักฐาน จัดตัวตรวจละเอียดใหม่ที่ไม่ติดตั้ง ไม่ดาวน์โหลด ไม่เปิด cloud และไม่ส่ง log/command line/secret ออกมา
+
+จำเป็นต้องใช้บัญชี Pilot เพราะบัญชีหลักอ่าน log และยืนยันเจ้าของ process บางตัวไม่ได้ตามสิทธิ์ เปิด PowerShell ปกติใน ChatHandPilot แล้วรันชุดคำสั่งเดียวนี้ (ตรวจ hash ก่อนเรียก):
+
+```powershell
+$p='C:\ProgramData\ChatHandPilot-Setup\scripts\Get-RestrictedExternalDiagnostic.ps1'
+if ((Get-FileHash -LiteralPath $p -Algorithm SHA256).Hash -ne '110DCCE1B9FA94B53C4E5B66DD0A510347F4EC489D7C747A52048DD0A04CAAE9') { throw 'Diagnostic hash mismatch; stop.' }
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+```
+
+แจ้งเพียง **ตรวจ external แล้ว** ผลจะอยู่ใน results/external-diagnostic-v33.json ไม่ต้องส่งรหัสผ่าน/key/log ดิบ หากนโยบาย Windows ปฏิเสธ ให้หยุด ไม่มีการสั่ง Bypass/เปลี่ยนนโยบายถาวรหรือขอแอดมิน
+
+ตัวตรวจเก็บสถานะ process/lock/staging, source integrity, Node/npm, execution policy และหมวด log พร้อมทดสอบไฟล์จำลองใหม่ที่ป้องกันเฉพาะเนื้อไฟล์และมี public control ไม่แก้ fixture เดิมหรือ ACL ของ profile ไม่มี retry แฝง และยังไม่ได้ทดสอบ positive path ด้วย token Pilot จึงยังไม่ประกาศผ่าน
+
+ขั้นตอนจาก V3.2 ด้านล่างเป็นประวัติ ไม่ต้องรันคำสั่งเหล่านั้นซ้ำ
+
 # ผลรันจริงและขั้นตอนถัดไป — 29 ตุลาคม 2026
 
 อ่าน pilot-result.json แล้ว: **BLOCKED ที่ setup-dwb** ยืนยันบัญชี Pilot ไม่ใช่แอดมิน, payload hash และ local file I/O ผ่าน แต่การปฏิเสธไฟล์จำลองยังยืนยันไม่ได้ ยังไม่มีหลักฐานว่าติดตั้ง DWB/worker/tunnel หรือ import 7 skills สำเร็จ ไม่ต้องรัน Setup ซ้ำ

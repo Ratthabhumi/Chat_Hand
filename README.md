@@ -1,3 +1,5 @@
+V3.3: **BLOCKED / root cause UNKNOWN**. Owner diagnostic confirms external phase without config/result. No installer retry or cloud start. See [current owner handoff](docs/RESTRICTED_PILOT_V32.th.md). Earlier statuses below are historical.
+
 # Chat_Hand
 
 Latest V3.2 owner execution: **BLOCKED at setup-dwb**, not installed/accepted. Pilot identity, non-admin token, payload integrity and local file I/O passed; protected-fixture denial is inconclusive. Cloud remains off. See [current diagnostic handoff](docs/RESTRICTED_PILOT_V32.th.md) and [returned result](evidence/v3.2-pilot-execution.json). Do not rerun installation until the private error is classified.

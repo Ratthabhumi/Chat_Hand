@@ -60,6 +60,10 @@ try {
         if ($LASTEXITCODE -ne 2 -or $diagnosticGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
             throw 'Pilot diagnostic must refuse a different identity without exporting private data.'
         }
+        $externalGuard = (& powershell -NoProfile -File scripts\Get-RestrictedExternalDiagnostic.ps1) -join "`n"
+        if ($LASTEXITCODE -ne 2 -or $externalGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
+            throw 'External diagnostic must refuse a different identity before private reads or writes.'
+        }
     } else {
         'SKIP: negative identity guard under pilot; never trigger installation during repository checks.'
     }
