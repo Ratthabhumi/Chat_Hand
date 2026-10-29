@@ -1,3 +1,23 @@
+# V3.4 — กู้คืนเฉพาะ staging หนึ่งครั้ง
+
+ผลจริงใหม่: neutral protected fixture = ACCESS_DENIED, public control = PASS; Worker staging ระบุ 0.2.50 แต่ยังไม่ผ่าน vendor readiness/การย้ายติดตั้งจริง สาเหตุหยุดเดิมยัง UNKNOWN ไม่ต้องรัน Diagnostic เดิมซ้ำ
+
+เปิด PowerShell ปกติในบัญชี **ChatHandPilot** แล้วรันชุดคำสั่งเดียวนี้:
+
+```powershell
+$p='C:\ProgramData\ChatHandPilot-Setup\scripts\Repair-RestrictedExternal.ps1'
+if ((Get-FileHash -LiteralPath $p).Hash -ne 'D92903E914BB712A6AE40D6FC4F22FAA344CB09CED1DBA0B05F9021FF03A096F') { throw 'Recovery hash mismatch; stop.' }
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+```
+
+นี่เป็นตัวกู้คืนใหม่ ไม่ใช่ installer/diagnostic เดิม จะตรวจ source/สิทธิ์/process/lock/ความพร้อม Worker และ lockfile ก่อนย้าย staging ภายใน Pilot แล้วเรียกตัวติดตั้ง vendor เดิมหนึ่งครั้งเพื่อทำส่วนที่เหลือ หากผ่านจะตรวจ doctor/allowlist และนำเข้า 7 Skills ที่มีอยู่ อาจดาวน์โหลด dependency/Tunnel binary ตามรุ่นเดิม แต่ไม่กรอก key ไม่เปิด cloud ไม่เปิด Dashboard/MCP อัตโนมัติ
+
+ต้องใช้ session Pilot เพราะบัญชีหลักไม่มีสิทธิ์แก้/อ่าน private installation; ไม่มีการข้าม ACL หรือขอแอดมิน เก็บ log เดิมไว้และเก็บ log ใหม่ใน Pilot เท่านั้น ส่งกลับผลที่ลบข้อมูลส่วนตัวแล้วใน results/repair-v34-result.json
+
+รอจนได้ JSON แล้วแจ้ง **กู้คืนแล้ว** ถ้ารายงาน BLOCKED/IN_PROGRESS ให้หยุด ไม่รันซ้ำ ไม่ลบ attempt marker ตัวติดตั้งรอได้สูงสุด 20 นาที หากยังทำงานอยู่จะเก็บ child ไว้ ไม่สั่ง force-kill การรันซ้ำถูกป้องกันด้วย marker; ต้องตรวจหลักฐานก่อนการซ่อมเพิ่มเติม
+
+การเตรียมและ regression ในบัญชีหลักผ่าน แต่ positive Pilot recovery ยังไม่ได้รัน จึงยังไม่อ้างว่าติดตั้งสำเร็จ ข้อมูลด้านล่างเป็นประวัติ ไม่ต้องทำคำสั่งเก่าซ้ำ
+
 # V3.3 — ตรวจ external ก่อนแก้ ไม่ติดตั้งซ้ำ
 
 ได้รับ diagnostic จริงแล้ว: external / ไม่มี result และ config / logSignals ว่าง สาเหตุยัง UNKNOWN ตรวจ source เพิ่มแล้วแต่ยังไม่ใช้สมมติฐานแทนหลักฐาน จัดตัวตรวจละเอียดใหม่ที่ไม่ติดตั้ง ไม่ดาวน์โหลด ไม่เปิด cloud และไม่ส่ง log/command line/secret ออกมา

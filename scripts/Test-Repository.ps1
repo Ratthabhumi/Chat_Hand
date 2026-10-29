@@ -64,11 +64,17 @@ try {
         if ($LASTEXITCODE -ne 2 -or $externalGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
             throw 'External diagnostic must refuse a different identity before private reads or writes.'
         }
+        foreach ($script in @('Repair-RestrictedExternal.ps1','Invoke-PilotVendorSetup.ps1')) {
+            $guard = (& powershell -NoProfile -File (Join-Path $PSScriptRoot $script)) -join "`n"
+            if ($LASTEXITCODE -ne 2 -or $guard -notmatch 'BLOCKED_WRONG_IDENTITY') {throw 'Recovery must refuse a different identity before writes.'}
+        }
     } else {
         'SKIP: negative identity guard under pilot; never trigger installation during repository checks.'
     }
     & node --test scripts/check-fallback.test.cjs
     if ($LASTEXITCODE -ne 0) { throw 'Benchmark evaluator self-tests failed' }
+    & powershell -NoProfile -File scripts\Test-RecoveryTransport.ps1
+    if ($LASTEXITCODE -ne 0) {throw 'Recovery transport regression failed'}
     & git diff --check
     if ($LASTEXITCODE -ne 0) { throw 'Whitespace validation failed' }
     'PASS: JSON, local document links, local I/O, evaluator self-tests and whitespace.'

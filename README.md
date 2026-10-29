@@ -1,3 +1,5 @@
+V3.4: **BLOCKED pending Pilot recovery execution**. Actual synthetic protected-file denial passed; prepared a guarded single-attempt staging recovery. Historical root cause UNKNOWN, cloud OFF. See [current recovery packet](docs/RESTRICTED_PILOT_V32.th.md). Earlier statuses are historical.
+
 V3.3: **BLOCKED / root cause UNKNOWN**. Owner diagnostic confirms external phase without config/result. No installer retry or cloud start. See [current owner handoff](docs/RESTRICTED_PILOT_V32.th.md). Earlier statuses below are historical.
 
 # Chat_Hand
