@@ -1,3 +1,19 @@
+# ผลรันจริงและขั้นตอนถัดไป — 29 ตุลาคม 2026
+
+อ่าน pilot-result.json แล้ว: **BLOCKED ที่ setup-dwb** ยืนยันบัญชี Pilot ไม่ใช่แอดมิน, payload hash และ local file I/O ผ่าน แต่การปฏิเสธไฟล์จำลองยังยืนยันไม่ได้ ยังไม่มีหลักฐานว่าติดตั้ง DWB/worker/tunnel หรือ import 7 skills สำเร็จ ไม่ต้องรัน Setup ซ้ำ
+
+บัญชีหลักอ่าน log ใน profile Pilot ไม่ได้ตาม ACL จึงต้องให้เจ้าของเปิด PowerShell ปกติใน ChatHandPilot แล้วรัน **ตัววินิจฉัยใหม่แบบอ่านอย่างเดียว**:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File "C:\ProgramData\ChatHandPilot-Setup\scripts\Get-RestrictedPilotDiagnostic.ps1"
+```
+
+ตัวตรวจอ่านเฉพาะ package/config presence, vendor result, log ติดตั้ง และ fixture จำลองเดิม ส่งกลับเฉพาะหมวด error ที่กำหนดไว้ใน results/pilot-diagnostic.json ไม่มี log ดิบ, SID, path ส่วนตัว หรือ key ไม่ติดตั้ง ไม่ดาวน์โหลด ไม่เปิด DWB/Tunnel และไม่เปลี่ยน ACL ไม่มีการลด ExecutionPolicy ถาวร
+
+แจ้งเพียง **วินิจฉัยแล้ว** ไม่ต้องส่ง key/password หรือ log ดิบ หาก Windows ปฏิเสธการรัน ให้หยุดและส่งเฉพาะข้อความที่ลบข้อมูลลับแล้ว การวินิจฉัยผ่านบัญชี Pilot ยังไม่ถูกทดสอบ; guard จากบัญชีหลักผ่าน (exit 2)
+
+ข้อมูลเตรียมติดตั้งด้านล่างเป็นประวัติก่อน owner execution ไม่ใช่คำสั่งให้รัน Setup ซ้ำ
+
 # V3.2 — ใช้บัญชีที่มีแล้ว ไม่สร้างใหม่
 
 ตรวจสด 29 ตุลาคม 2026: บัญชี pilot เปิดใช้งาน เป็นสมาชิก Users ไม่ใช่ Administrators และมี profile ลงทะเบียน/โหลดอยู่ แต่ Codex ปัจจุบันยังเป็นบัญชีหลัก การอ่าน LocalAppData ของ pilot จากบัญชีหลักถูกปฏิเสธ จึงไม่สรุปว่าโฟลเดอร์นั้นหาย และไม่ข้ามสิทธิ์

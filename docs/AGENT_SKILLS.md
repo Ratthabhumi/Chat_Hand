@@ -1,3 +1,9 @@
+## V3.2 owner execution checked — 2026-10-29
+
+**BLOCKED at setup-dwb.** The returned pilot-result.json confirms the actual pilot identity, no administrator token, payload integrity PASS and Windows-local synthetic write/read/delete PASS. Protected-fixture denial is NOT VERIFIED (unexpected filesystem error). DWB setup did not finish; seven-skill import, managed component versions, workspace policy, process ownership, MCP calls and hosted Chat acceptance are not verified under this identity. No credentials copied or cloud start reported. This supersedes earlier wording that owner execution was pending.
+
+The current original-account process cannot read the pilot setup log: Windows denies access. No ACL bypass, reinstall, dependency patch, new credentials, cloud start or production modification performed. Root cause is UNKNOWN. A read-only pilot diagnostic classifies fixed error categories from existing vendor result/private log, checks the synthetic fixture through nested exception types, and exports no raw messages/paths. Its original-account refusal passed; its positive pilot path is pending. See [owner diagnostic steps](RESTRICTED_PILOT_V32.th.md). Existing shell-tool restrictions, advisory triage and timeout/restart gates remain unresolved; hosted Tunnel stays NO-GO. Existing original installation remains retained; live Remote Desktop Commander availability was not retested in this continuation.
+
 # Agent Skills are part of V3
 
 **Current V3.1:** reviewed collection is now seven. Add security-threat-model and frontend-design, both MANUAL, with pinned source/licenses and exact instruction delivery verified locally. The original five listed below retain their versions. Latest result: [v3.1 skills evidence](../evidence/v3.1-skills-local.json); [coverage and limits](SKILLS_CATALOG.md). No media backend, model behavior or ordinary-Chat invocation is implied.

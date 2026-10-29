@@ -1,5 +1,7 @@
 # Chat_Hand
 
+Latest V3.2 owner execution: **BLOCKED at setup-dwb**, not installed/accepted. Pilot identity, non-admin token, payload integrity and local file I/O passed; protected-fixture denial is inconclusive. Cloud remains off. See [current diagnostic handoff](docs/RESTRICTED_PILOT_V32.th.md) and [returned result](evidence/v3.2-pilot-execution.json). Do not rerun installation until the private error is classified.
+
 **V3.2:** existing pilot account confirmed Standard User with a registered/loaded profile. Current Codex is still the original identity; target-user runtime/ACL/E2E are not verified. A narrow-ACL neutral transfer bundle is ready. [One owner command in Thai](docs/RESTRICTED_PILOT_V32.th.md). Do not create another account/key or start cloud access yet.
 
 Windows local AI integration audit and a reproducible, synthetic file probe.

@@ -56,6 +56,10 @@ try {
         if ($LASTEXITCODE -ne 2 -or $identityGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
             throw 'Restricted setup must refuse a non-pilot validation identity before any writes.'
         }
+        $diagnosticGuard = (& powershell -NoProfile -File scripts\Get-RestrictedPilotDiagnostic.ps1) -join "`n"
+        if ($LASTEXITCODE -ne 2 -or $diagnosticGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
+            throw 'Pilot diagnostic must refuse a different identity without exporting private data.'
+        }
     } else {
         'SKIP: negative identity guard under pilot; never trigger installation during repository checks.'
     }
