@@ -1,5 +1,17 @@
 # Final report
 
+## V3.2 current result — 2026-10-29
+
+**PARTIAL / owner execution required.** Existing pilot enabled, member of Users and not Administrators, profile registered/loaded. Current Codex identity is not pilot; access to pilot LocalAppData from the main account was denied. No password, real SID, private profile path or credential published. No request to recreate the account or key.
+
+Prepared narrow-ACL `%PROGRAMDATA%\ChatHandPilot-Setup`: verified official ZIP, seven pinned skill sources, guarded setup script and a harmless protected-fixture pointer. No old node_modules/session/SQLite/auth/DPAPI copied. Pilot reads payload and can modify only the result directory; no broad Users/Everyone grants observed on payload files. ACLs changed only on newly created staging/result/fixture locations, not existing profiles/projects. Read-only verification matched all 39 payload files and the official archive SHA-256.
+
+The setup script rejects the current original identity before writes/processes/network (Windows PowerShell test exit 2). Its positive path is **NOT EXECUTED or accepted** under pilot yet. Owner action: [switch to the existing pilot and run one command](RESTRICTED_PILOT_V32.th.md). It prepares app/data/workspace owned by pilot, keeps cloud off, imports seven reviewed skills without extras, and returns sanitized JSON for continuation. Installing dependencies separately is necessary only for the separate identity; original installations are retained.
+
+Target process owners, actual pilot OS denials, server tool restriction/risk decision, advisory remediation, MCP timeout/restart regression, skill activation and normal Chat E2E remain unverified. Account membership and payload checks are not OS containment proof. No vendor binary/source patch or security exception accepted. Existing dependency triage remains unresolved; no blind update. Main broker/Tunnel were stopped at preflight and no new runtime was launched.
+
+Reproducible preparation code is scripts/Prepare-RestrictedTransfer.ps1; it refuses existing staging and requires reviewed local sources rather than fetching/reinstalling blindly. Setup/private logs stay in the pilot profile; only sanitized result JSON is returned. Historical V3.1 evidence remains below.
+
 ## V3.1 current result — 2026-10-29
 
 Latest retest limitation: local MCP path/security probe timed out (-32001, 15s), and initial graceful stop returned DWB_UPGRADE_BUSY. No new path PASS or successful restart is claimed. A subsequent skill recheck passed on the existing broker; it is not restart evidence. Later diagnostic showed zero workers/requests/queue, allowing one final graceful stop without force-kill. See current runtime/status artifacts. The previous policy/delivery passes and CI do not erase the timeout.

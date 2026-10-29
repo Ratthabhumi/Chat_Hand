@@ -1,5 +1,7 @@
 # Rollback
 
+V3.2 preparation created only a narrow-ACL ProgramData source transfer, a result directory and a new harmless private fixture. No target-user runtime, account, key or startup was created by Codex. Keep original DWB/Remote untouched. Owner may review/preserve result data before removing only the prepared staging/fixture; no recursive deletion or account/profile removal was executed. If bootstrap later runs, stop that identity's exact runtime and review its own LocalAppData artifacts before any removal. Migration/uninstall under pilot is not claimed tested.
+
 ## V3 installed pilot
 
 Run `powershell -NoProfile -File scripts/Dwb-Pilot.ps1 -Action Stop` to stop only the pilot's recorded Tunnel and drain/stop its broker. Local test shutdown was verified with broker state stopped; credentialed Tunnel shutdown/revocation is NOT TESTED. Close the pilot Dashboard after stopping. No startup entry or service was installed, and no credentials were provisioned.

@@ -1,5 +1,7 @@
 # Chat_Hand
 
+**V3.2:** existing pilot account confirmed Standard User with a registered/loaded profile. Current Codex is still the original identity; target-user runtime/ACL/E2E are not verified. A narrow-ACL neutral transfer bundle is ready. [One owner command in Thai](docs/RESTRICTED_PILOT_V32.th.md). Do not create another account/key or start cloud access yet.
+
 Windows local AI integration audit and a reproducible, synthetic file probe.
 
 **V3 status: PARTIAL (2026-10-29, Asia/Bangkok).** Owner selected DWB MCP Studio + its managed OpenAI Tunnel. Installed isolated beta.16 with one worker and an explicit sandbox allowlist. Local MCP reads and outside/traversal/junction denial passed. Shell confinement FAILED and dependency advisories remain, so the cloud tunnel is stopped and ChatGPT E2E is unverified. V1/V2 evidence is preserved.

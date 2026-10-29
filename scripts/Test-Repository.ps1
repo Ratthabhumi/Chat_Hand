@@ -50,6 +50,15 @@ try {
     }
     & powershell -NoProfile -File scripts\Test-LocalSandbox.ps1
     if ($LASTEXITCODE -ne 0) { throw 'Local sandbox probe failed' }
+    $pilotAccount = Get-CimInstance Win32_UserAccount -Filter "LocalAccount=True AND Name='ChatHandPilot'"
+    if (-not $pilotAccount -or [Security.Principal.WindowsIdentity]::GetCurrent().User.Value -ne $pilotAccount.SID) {
+        $identityGuard = (& powershell -NoProfile -File scripts\Setup-RestrictedPilot.ps1) -join "`n"
+        if ($LASTEXITCODE -ne 2 -or $identityGuard -notmatch 'BLOCKED_WRONG_IDENTITY') {
+            throw 'Restricted setup must refuse a non-pilot validation identity before any writes.'
+        }
+    } else {
+        'SKIP: negative identity guard under pilot; never trigger installation during repository checks.'
+    }
     & node --test scripts/check-fallback.test.cjs
     if ($LASTEXITCODE -ne 0) { throw 'Benchmark evaluator self-tests failed' }
     & git diff --check

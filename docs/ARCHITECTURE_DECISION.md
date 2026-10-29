@@ -1,5 +1,7 @@
 # Architecture decision
 
+V3.2 keeps the same DWB-managed architecture but separates the runtime identity: original-user Codex/repos/Remote/DWB retained for rollback; owner-created pilot is intended to own new app/data/workspace and all live pilot components. No shared node_modules, secrets, browser/SSH/GitHub session or DPAPI migration. Neutral reviewed-source transfer is prepared with narrow ACLs. No live target process or cloud path accepted yet. A restricted identity still needs OS/server controls, residual-risk decision and actual tests.
+
 V3.1 retains DWB + managed Tunnel + Agent Skills. No alternative-agent comparison or parallel transport installed. Owner has Tunnel/key; cloud remains NO-GO because OS/server containment and vulnerability disposition are unfinished. Owner will prepare a separate Windows identity; that is a prerequisite candidate, not an accepted security boundary. Seven reviewed instruction packages, catalog-only media and inactive project-specific designs do not change access authority.
 
 ## V3 owner decision — 2026-10-29

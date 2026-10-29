@@ -1,0 +1,16 @@
+{
+  "observedDateLocal": "2026-10-29",
+  "accountExists": true,
+  "accountEnabled": true,
+  "standardUsersDirectMember": true,
+  "administratorsDirectMember": false,
+  "profileRegistered": true,
+  "profileLoaded": true,
+  "profileDirectoryExists": true,
+  "pilotLocalAppDataInspectionFromMain": "ACCESS_DENIED; not evidence that the directory is absent",
+  "currentCodexIdentityIsPilot": false,
+  "effectivePilotTokenAndAcl": "NOT TESTED: current process is still the original account",
+  "runtimeStatusAtPreflight": {"broker":"stopped","tunnel":"stopped"},
+  "secretsOrRealSidsPublished": false,
+  "meaning": "Account/profile preparation exists; runtime migration and effective isolation remain unverified. No need to create the account again."
+}

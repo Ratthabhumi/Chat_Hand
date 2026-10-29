@@ -1,5 +1,13 @@
 # Security review and limits
 
+## V3.2 identity/transfer evidence
+
+Pilot is enabled, directly in Users, not directly in Administrators, with registered/loaded profile. Current process is the main account; actual pilot token privileges and effective denial are NOT TESTED. Main-account inspection of pilot LocalAppData returned Access Denied; do not misreport absence or reverse the direction of that observation.
+
+New ProgramData transfer and result folders use protected explicit ACLs: main creator/System/Administrators full, pilot read/execute on payload and modify on results; no broad Users/Everyone/Authenticated Users grants found on transferred files. A new synthetic primary-account fixture excludes pilot; its actual denial must be tested from pilot. No existing profile/project ACL altered. These checks do not prove every ancestor/IPC/network/process boundary. No private bytes/secrets/old sessions copied.
+
+Bootstrap enforces the intended SID and rejects Administrator group tokens before mutation, network or process creation; wrong-identity guard passed in Windows PowerShell. Positive setup, actual runtime owners and effectiveness are NOT VERIFIED until owner execution. Source transfer integrity passed for 39 files including the reviewed ZIP/skill sources. Setup never enables cloud, copies keys or accepts residual risk; filtering/advisory/OS tests remain separate gates.
+
 ## V3.1 current gate
 
 Hosted NO-GO remains. Owner has Tunnel/key but no isolated Windows account/VM; owner elected to prepare one manually. No account, ACL, vendor source, managed version, credential, billing or startup change made. Targeted worker/server inspection and advisory reachability metadata are in [DEPENDENCY_TRIAGE.md](DEPENDENCY_TRIAGE.md). A standard account is not automatic filesystem/network/process confinement and does not remove MCP tools; both OS and server controls still need tests.

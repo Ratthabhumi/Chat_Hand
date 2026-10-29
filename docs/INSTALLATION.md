@@ -1,5 +1,7 @@
 # Installation and operating instructions
 
+V3.2 migration is staged, not completed: [restricted pilot instructions](RESTRICTED_PILOT_V32.th.md). Existing account/profile verified, but current Codex cannot execute as that user without owner interactive action. Verified artifacts only are staged under ProgramData with explicit minimal ACLs. Do not expose the main profile or transfer old credentials/node_modules. Do not rerun original-user Setup; owner runs the guarded bootstrap under pilot. No account creation, key provisioning or vendor-source change performed.
+
 ## V3.1 owner action
 
 Owner already has Tunnel/key; reuse after security acceptance, do not provision again. Current pilot inspection found no local settings/profile/key.dpapi. Owner has no isolated Windows environment and requested [these exact account-preparation steps](OWNER_ACCOUNT_SETUP.th.md). Do not open the primary profile to another user just to reuse its installation. No migration, credential entry or cloud start was performed. Skills collection now seven, not a new MCP stack; see [catalog](SKILLS_CATALOG.md).

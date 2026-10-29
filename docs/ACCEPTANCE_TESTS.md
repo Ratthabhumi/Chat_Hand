@@ -1,5 +1,21 @@
 # Actual acceptance evidence
 
+## V3.2 current evidence
+
+| Check | Result |
+|---|---|
+| Existing enabled account / Users / not Administrators | PASS: Windows native membership query |
+| Profile initialized/loaded | Registered and loaded; current process still not pilot |
+| Effective pilot token / primary-file denial | NOT TESTED from pilot |
+| Main -> pilot LocalAppData inspection | ACCESS DENIED; not a missing directory or reverse denial proof |
+| Neutral payload integrity | PASS: 39 files and pinned release ZIP |
+| New staging ACL configuration | Protected; no broad grants observed; effective pilot access pending |
+| Wrong-identity setup guard | PASS: Windows PowerShell refuses current identity, exit 2 before bootstrap writes |
+| Actual target-user DWB setup/process owners | BLOCKED: owner must run guarded bootstrap in existing pilot session |
+| Hosted Tunnel / normal Chat / restart / skills under pilot | NOT TESTED |
+
+Existing identity/source/library tests are not evidence of target-user installation or cloud acceptance. See [owner command](RESTRICTED_PILOT_V32.th.md). Dependency/security/timeout findings remain open.
+
 ## V3.1 current status
 
 Latest local path retest: FAIL (MCP timeout after 15s). Initial stop: DWB_UPGRADE_BUSY; no force-kill. Later status became idle and a final graceful stop was attempted only after that new evidence. Skill recheck PASS is **not** a policy-persistence-through-restart PASS. Hosted security/recovery remains unresolved. See v3.1-local-mcp.json and final status evidence.
