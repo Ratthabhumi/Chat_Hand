@@ -1,0 +1,30 @@
+{
+  "observedDateLocal": "2026-10-29",
+  "timezone": "Asia/Bangkok",
+  "remote": {
+    "deviceCount": 1,
+    "onlineCount": 1,
+    "version": "0.3.1",
+    "sameDeviceAsV1": true,
+    "newProcessStarted": false,
+    "sandboxReadViaConnector": "PASS: exact hello.txt sentence returned",
+    "host": "Connector invocation from this Codex chat, not ordinary ChatGPT web",
+    "allowedDirectories": [],
+    "outsideSyntheticRead": "SUCCEEDED: denial requirement FAIL",
+    "remoteWriteReadbackDelete": "NOT RUN: stopped at failed directory boundary",
+    "reconnectDisconnect": "NOT RUN: existing user session left running",
+    "shellIsolation": "NOT VERIFIED; 33 blocked commands is not OS containment"
+  },
+  "fallback": {
+    "antigravityDesktopFileVersion": "2.0.1.0",
+    "antigravityRunning": false,
+    "agyOnPathOrDefaultLocation": false,
+    "opencodeDesktopFileVersion": "1.19.5.0",
+    "opencodeRunning": true,
+    "opencodeUiProbe": "Minimized window; state text unavailable on first observation; no input or retry",
+    "providerModelAndAccountQuota": "NOT VERIFIED",
+    "modelInvocation": "NOT RUN",
+    "installedNewSoftware": false
+  },
+  "publicationRedaction": "Device identifiers, names, raw configuration, private paths and credentials omitted"
+}

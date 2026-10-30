@@ -1,0 +1,14 @@
+{
+    "status":  "BLOCKED",
+    "identityIsPilot":  true,
+    "administratorTokenPresent":  false,
+    "cloudStarted":  false,
+    "credentialsCopied":  false,
+    "tests":  {
+                  "payloadIntegrity":  "PASS",
+                  "primarySyntheticFixtureDenied":  "NOT VERIFIED: unexpected filesystem error",
+                  "localSyntheticReadWriteCleanup":  "PASS (Windows file I/O, not MCP)"
+              },
+    "stage":  "setup-dwb",
+    "error":  "Operation stopped; inspect private pilot logs. Do not publish raw logs or retry blindly."
+}

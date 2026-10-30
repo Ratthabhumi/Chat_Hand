@@ -1,0 +1,14 @@
+{
+    "status":  "BLOCKED",
+    "stage":  "staging-readiness-and-lock-pin",
+    "rootCause":  "UNKNOWN",
+    "identityIsPilot":  true,
+    "cloudStarted":  false,
+    "checks":  {
+                   "releaseFilesMatched":  208,
+                   "pilotConflicts":  "NONE_IDENTIFIED; vendor locks held during promotion"
+               },
+    "installerAttempts":  0,
+    "error":  "Stopped at reported stage. Private v34 logs and original evidence retained. No automatic retry.",
+    "errorHResult":  -2147024809
+}

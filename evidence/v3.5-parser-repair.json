@@ -1,0 +1,25 @@
+{
+  "dateLocal": "2026-10-30",
+  "status": "PREPARED_NOT_EXECUTED_IN_PILOT",
+  "priorOwnerResult": "v3.5-owner-recovery-result.json",
+  "confirmedCodeDefect": "Windows PowerShell 5.1 ConvertFrom-Json rejects valid empty property names in npm packages root",
+  "affectedExpression": "Get-Content package-lock.json -Raw | ConvertFrom-Json",
+  "syntheticError": {
+    "fullyQualifiedErrorId": "Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand",
+    "type": "System.Management.Automation.PSArgumentException",
+    "hresult": -2147024809
+  },
+  "actualPilotExpression": "NOT YET CONFIRMED with per-operation checkpoint; prior stage/HRESULT consistent",
+  "originalVendorInterruption": "UNKNOWN",
+  "fix": "Read lockfile with existing Node JSON.parse, return fixed structural booleans and retain exact version/registry/SRI checks; no vendor modifications",
+  "newRecoverySha256": "5085C9A136A06A952A719E0D1C3727E0E2E9EB8548F6EED7804C1B05C28EBCCF",
+  "lockValidatorSha256": "6DBE9BEBC78C9DD76DE45683BB105A22A281026A1328148927C50B4FC6DE93B8",
+  "regression": "PASS: same empty-key fixture fails legacy Windows PowerShell parser and passes actual corrected CLI; negative version/URL/SRI/missing entry/schema/shape rejected; stderr/quoting/nonzero transport regression passed",
+  "priorPromotionOrInstaller": "Not reached per owner evidence; installerAttempts 0",
+  "modificationMarker": "Must be checked live before continuation; never removed/reset",
+  "newOutput": "results/repair-v35-result.json; original v34 result preserved",
+  "readOnlyMode": "-PreflightOnly: per-operation staging checks without promotion/installer; same guards",
+  "retryLimit": "Same persistent v34 attempt marker and one-use helper retained",
+  "cloud": "OFF",
+  "runtimeSkillsSecurity": "NOT ACCEPTED; existing dependencies/tool/shell/reliability/E2E gates remain"
+}
