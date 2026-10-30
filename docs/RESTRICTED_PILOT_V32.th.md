@@ -1,3 +1,21 @@
+# V3.5 — แก้ parser แล้ว ดำเนินต่อด้วย checkpoint ใหม่
+
+ผล v34 เก็บไว้ครบ: หยุดก่อนย้าย Worker และ installerAttempts=0 พบ bug ในโค้ดกู้คืน: Windows PowerShell 5.1 ConvertFrom-Json อ่าน npm packages[""] ไม่ได้ จำลองได้ HRESULT เดียวกัน แก้ใช้ Node JSON.parse โดยยังตรวจ version/URL/SRI ครบ ผลกับ lock จริงจะถูกยืนยันใน read-only preflight ก่อนย้าย ไม่ต้องรัน Diagnostic เก่าซ้ำ
+
+เปิด PowerShell ปกติใน **ChatHandPilot** แล้วรันชุดเดียวนี้:
+
+```powershell
+$p='C:\ProgramData\ChatHandPilot-Setup\scripts\Repair-RestrictedExternal.ps1'
+if ((Get-FileHash -LiteralPath $p).Hash -ne '5085C9A136A06A952A719E0D1C3727E0E2E9EB8548F6EED7804C1B05C28EBCCF') { throw 'Recovery hash mismatch; stop.' }
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+```
+
+เป็น payload ที่แก้แล้ว พร้อม checkpoint แยกและ hash ของ validator ตัวใหม่ จะหยุดหากพบ modification marker เดิม ไม่ลบ marker/ผลเดิม ไม่ทำซ้ำ installer ที่เคยเริ่มแล้ว หาก preflight ผ่านจึงย้าย Worker ที่ vendor ตรวจแล้วและเรียก installer เดิมหนึ่งครั้ง ต่อด้วย doctor/allowlist/7 skills ตามเดิม ไม่เปิด cloud
+
+ต้องรันใน Pilot เพราะบัญชีหลักไม่มีสิทธิ์พื้นที่ติดตั้ง ผลใหม่ส่งกลับ results/repair-v35-result.json แจ้งเพียง **กู้คืน v35 แล้ว** ถ้า BLOCKED/IN_PROGRESS ให้หยุด ไม่รันซ้ำ ไม่ส่ง key หรือ raw log สามารถใช้ -PreflightOnly เพื่อตรวจ staging แบบไม่ย้าย/ติดตั้งได้ แต่ไม่จำเป็นต้องเพิ่มรอบตรวจสำหรับขั้นตอนข้างต้น
+
+ข้อมูลด้านล่างเป็นประวัติ ไม่ต้องรันคำสั่งเก่าซ้ำ
+
 # V3.4 — กู้คืนเฉพาะ staging หนึ่งครั้ง
 
 ผลจริงใหม่: neutral protected fixture = ACCESS_DENIED, public control = PASS; Worker staging ระบุ 0.2.50 แต่ยังไม่ผ่าน vendor readiness/การย้ายติดตั้งจริง สาเหตุหยุดเดิมยัง UNKNOWN ไม่ต้องรัน Diagnostic เดิมซ้ำ

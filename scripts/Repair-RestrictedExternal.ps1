@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param()
+param([switch]$PreflightOnly)
 $ErrorActionPreference='Stop'
 $identity=[Security.Principal.WindowsIdentity]::GetCurrent()
 $pilot=Get-CimInstance Win32_UserAccount -Filter "LocalAccount=True AND Name='ChatHandPilot'"
@@ -20,8 +20,8 @@ $data=Join-Path $local 'DWB-MCP-Studio-ChatHand'
 $workspace=Join-Path $local 'ChatHandPilot\Sandbox'
 $env:DWB_DATA_DIR=$data
 $env:DWB_CONFIG_FILE=Join-Path $data 'config.json'
-$resultPath=Join-Path $bundle 'results\repair-v34-result.json'
-if (Test-Path -LiteralPath $resultPath) { $resultPath=Join-Path $bundle ('results\repair-v34-repeat-refused-'+[guid]::NewGuid().ToString('N')+'.json') }
+$resultPath=Join-Path $bundle 'results\repair-v35-result.json'
+if (Test-Path -LiteralPath $resultPath) { $resultPath=Join-Path $bundle ('results\repair-v35-additional-'+[guid]::NewGuid().ToString('N')+'.json') }
 $report=[ordered]@{status='BLOCKED';stage='preflight';rootCause='UNKNOWN';identityIsPilot=$true;cloudStarted=$false;checks=[ordered]@{};installerAttempts=0}
 $handles=@()
 $gate=$null
@@ -61,7 +61,8 @@ try {
         if ($sid -ne $identity.User.Value) { throw 'Ownership mismatch' }
     }
     $gate=[IO.File]::Open((Join-Path $data 'repair-v34.lock'),'OpenOrCreate','ReadWrite','None')
-    if (Test-Path -LiteralPath (Join-Path $data 'repair-v34-attempt.json')) { throw 'Recovery already attempted; inspect evidence, never retry automatically' }
+    $report.checks.previousModificationMarkerPresent=[bool](Test-Path -LiteralPath (Join-Path $data 'repair-v34-attempt.json'))
+    if ($report.checks.previousModificationMarkerPresent) { throw 'Recovery already attempted; inspect evidence, never retry automatically' }
     $report.stage='release-source-integrity'
     # Verify all original release files before sourcing/executing vendor code.
     $archive=Join-Path $bundle 'dwb-windows.zip'
@@ -114,18 +115,50 @@ try {
     }
     $report.checks.pilotConflicts='NONE_IDENTIFIED; vendor locks held during promotion'
     $report.stage='staging-readiness-and-lock-pin'
+    $report.stage='staging-enumeration'
     $candidates=@(Get-ChildItem -LiteralPath $paths.Root -Directory -Force | Where-Object Name -match '^\.install-worker-[a-f0-9]{32}$')
+    $report.checks.stagingCandidateCount=$candidates.Count
+    $report.stage='staging-target-existence'
+    $report.checks.workerTargetExists=[bool](Test-Path -LiteralPath $paths.WorkerRoot)
+    $report.checks.tunnelTargetExists=[bool](Test-Path -LiteralPath $paths.TunnelRoot)
     if ($candidates.Count -ne 1 -or (Test-Path -LiteralPath $paths.WorkerRoot) -or (Test-Path -LiteralPath $paths.TunnelRoot)) { throw 'Unexpected staging/target state' }
     $staging=$candidates[0].FullName
+    $report.stage='staging-reparse-inspection'
     if (@(Get-ChildItem -LiteralPath $staging -Recurse -Force | Where-Object {$_.Attributes -band [IO.FileAttributes]::ReparsePoint}).Count) { throw 'Staged reparse point' }
+    $report.stage='staging-vendor-path-check'
     Assert-DwbExternalPath $staging
+    $report.stage='staging-vendor-worker-readiness'
     $worker=Get-DwbWorkerState (Join-Path $staging 'node_modules\@wonderwhy-er\desktop-commander\dist\index.js')
+    $report.checks.vendorWorkerReady=$worker.Ready
     if (-not $worker.Ready) { throw 'Vendor worker readiness failed' }
-    $lock=Get-Content -LiteralPath (Join-Path $staging 'package-lock.json') -Raw|ConvertFrom-Json
-    $pin=$lock.packages.'node_modules/@wonderwhy-er/desktop-commander'
-    if ($pin.version -ne '0.2.50' -or $pin.resolved -ne 'https://registry.npmjs.org/@wonderwhy-er/desktop-commander/-/desktop-commander-0.2.50.tgz' -or $pin.integrity -notmatch '^sha512-[A-Za-z0-9+/]+=*$') { throw 'Staged package lock mismatch' }
+    $report.stage='staging-lock-file-existence'
+    $lockPath=Join-Path $staging 'package-lock.json'
+    $report.checks.lockFileExists=[IO.File]::Exists($lockPath)
+    $report.stage='staging-legacy-parser-read-only-probe'
+    try {
+        $null=Get-Content -LiteralPath $lockPath -Raw|ConvertFrom-Json
+        $report.checks.legacyParser='PASS'
+    } catch {
+        $safeId=if ($_.FullyQualifiedErrorId -eq 'Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand') {$_.FullyQualifiedErrorId} else {'OTHER_ERROR_ID_REDACTED'}
+        $report.checks.legacyParser=@{type=$_.Exception.GetType().FullName;fullyQualifiedErrorId=$safeId;hresult=$_.Exception.HResult;line=$_.InvocationInfo.ScriptLineNumber}
+    }
+    $report.stage='staging-lock-validator-integrity'
+    $validator=Join-Path $bundle 'scripts\Check-StagedWorkerLock.mjs'
+    if ((Get-FileHash -LiteralPath $validator).Hash -ine '6DBE9BEBC78C9DD76DE45683BB105A22A281026A1328148927C50B4FC6DE93B8') {throw 'Lock validator mismatch'}
+    $report.stage='staging-lock-schema-and-exact-pin'
+    $lockCheck=Invoke-PrivateNode -NodeArgs @($validator,$lockPath)
+    $report.checks.lockStructure=$lockCheck
+    if (-not $lockCheck.ok) {throw 'Staged package lock mismatch'}
+    if ($lockCheck.checks.emptyRootKeyPresent -and $report.checks.legacyParser.hresult -eq -2147024809) {
+        $report.rootCause='VERIFIED_CURRENT_LOCK: Windows PowerShell ConvertFrom-Json rejects valid npm empty root key; original installer interruption remains UNKNOWN'
+    }
     $report.checks.stagedWorker='PASS_VENDOR_READINESS_AND_LOCK_PIN; not full dependency content audit'
     $report.checks.stageLockSha256=(Get-FileHash (Join-Path $staging 'package-lock.json')).Hash
+    Save-Report
+    if ($PreflightOnly) {
+        $report.status='PARTIAL_PREFLIGHT_ONLY';$report.stage='read-only-staging-passed'
+        return
+    }
     $report.stage='promote-verified-staging'
     # Persistent one-attempt record precedes the first modification of staging.
     $invocationId=[guid]::NewGuid().ToString('N')
@@ -189,6 +222,12 @@ try {
     $report.error='Stopped at reported stage. Private v34 logs and original evidence retained. No automatic retry.'
     # Export only numeric/type diagnostics, never exception text or paths.
     $report.errorHResult=$_.Exception.HResult
+    $report.errorType=$_.Exception.GetType().FullName
+    $id=$_.FullyQualifiedErrorId
+    # FQID can contain a thrown message. Export only a bounded identifier form.
+    $report.errorId=if ($id -match '^[A-Za-z0-9_.-]+(?:,[A-Za-z0-9_.-]+)?$') {$id} else {'REDACTED_NON_IDENTIFIER'}
+    $line=$_.InvocationInfo.ScriptLineNumber
+    if ($line -gt 0 -and $line -lt 10000) {$report.errorLine=$line}
 } finally {
     foreach ($h in $handles) {$h.Dispose()}
     if ($gate) {$gate.Dispose()}

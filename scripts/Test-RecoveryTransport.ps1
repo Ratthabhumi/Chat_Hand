@@ -23,9 +23,22 @@ try {
     $rejected=$false
     try {$null=Invoke-PrivateNode -NodeArgs @('--eval','process.stderr.write("synthetic failure");process.exit(9)')} catch {if ($_.Exception.Message -eq 'Local admin CLI failed') {$rejected=$true}}
     if (-not $rejected) {throw 'Nonzero exit was not rejected'}
+    $lockPath=Join-Path $data 'synthetic-package-lock.json'
+    $json='{"lockfileVersion":3,"packages":{"":{},"node_modules/@wonderwhy-er/desktop-commander":{"version":"0.2.50","resolved":"https://registry.npmjs.org/@wonderwhy-er/desktop-commander/-/desktop-commander-0.2.50.tgz","integrity":"sha512-c3ludGhldGlj"}}}'
+    [IO.File]::WriteAllText($lockPath,$json)
+    $oldParserFailed=$false
+    try {$null=$json|ConvertFrom-Json} catch {
+        $oldParserFailed=($_.Exception.HResult -eq -2147024809 -and $_.FullyQualifiedErrorId -eq 'Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand')
+    }
+    if (-not $oldParserFailed) {throw 'Expected Windows PowerShell empty-key parser regression was not reproduced'}
+    $validated=Invoke-PrivateNode -NodeArgs @((Join-Path $PSScriptRoot 'Check-StagedWorkerLock.mjs'),$lockPath)
+    if (-not $validated.ok -or -not $validated.checks.emptyRootKeyPresent) {throw 'Corrected npm lock parser failed the same fixture'}
+    'PASS: Windows PowerShell legacy empty-key HRESULT reproduced; corrected actual Node validator accepts the same lock without dropping pin checks.'
     'PASS: actual recovery transport retains JSON/quoted arguments despite stderr and rejects nonzero exit. Synthetic only; no pilot installation.'
 } finally {
     $log=Join-Path $data 'repair-v34-node-private.log'
     if ([IO.File]::Exists($log)) {Remove-Item -LiteralPath $log}
+    $lockPath=Join-Path $data 'synthetic-package-lock.json'
+    if ([IO.File]::Exists($lockPath)) {Remove-Item -LiteralPath $lockPath}
     Remove-Item -LiteralPath $data
 }
