@@ -1,0 +1,46 @@
+{
+  "status": "PARTIAL",
+  "stage": "local-installation-and-import-only",
+  "rootCause": "VERIFIED_CURRENT_LOCK: Windows PowerShell ConvertFrom-Json rejects valid npm empty root key; original installer interruption remains UNKNOWN",
+  "identityIsPilot": true,
+  "cloudStarted": false,
+  "checks": {
+    "previousModificationMarkerPresent": false,
+    "releaseFilesMatched": 208,
+    "pilotConflicts": "NONE_IDENTIFIED; vendor locks held during promotion",
+    "stagingCandidateCount": 1,
+    "workerTargetExists": false,
+    "tunnelTargetExists": false,
+    "vendorWorkerReady": true,
+    "lockFileExists": true,
+    "legacyParser": {
+      "hresult": -2147024809,
+      "fullyQualifiedErrorId": "Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand",
+      "type": "System.Management.Automation.PSArgumentException",
+      "line": 139
+    },
+    "lockStructure": {
+      "ok": true,
+      "checks": {
+        "supportedSchema": true,
+        "packagesObject": true,
+        "emptyRootKeyPresent": true,
+        "expectedEntryPresent": true,
+        "versionMatches": true,
+        "resolvedMatches": true,
+        "integrityFormatMatches": true
+      }
+    },
+    "stagedWorker": "PASS_VENDOR_READINESS_AND_LOCK_PIN; not full dependency content audit",
+    "stageLockSha256": "94B5BA1AE45D8C140C6D9354EF1EBE871B4FD4680432BE6B785F6F311824717F",
+    "workerPromotion": "PASS; moved original staging, no copy/reinstall/deletion",
+    "vendorExitCode": 0,
+    "installation": "PASS vendor result/doctor/exact workspace/workerCap; runtime not started",
+    "managedWorker": "0.2.50 vendor validated",
+    "managedTunnel": "0.0.11 verified by vendor setup; no hosted connection",
+    "skills": "PASS seven pinned hashes/defaults/overrides; activation and restart NOT TESTED",
+    "security": "BLOCKED: process tools, residual risk, dependencies and runtime/reliability acceptance unresolved",
+    "hostedChat": "NOT TESTED; cloud OFF"
+  },
+  "installerAttempts": 1
+}

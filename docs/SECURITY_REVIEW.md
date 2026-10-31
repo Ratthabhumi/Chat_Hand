@@ -1,3 +1,11 @@
+## V3.6 current status — 2026-10-31
+
+**LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).
+- Identity Boundary: ChatHandPilot confirmed Standard User without Administrator group privileges.
+- Shell / Process Containment: **FAIL / GATE OPEN**. DWB beta.16 broker forwards worker tools `start_process`, `interact_with_process`, `set_config_value`, `force_terminate`, `kill_process`. While standard user privilege restricts administrative system modifications, processes spawned via `start_process` run with ChatHandPilot tokens and can access user profile data and network resources outside `sandbox`. No supported server-side tool filtering is built into DWB beta.16.
+- Entitlement Limitation: **HOST_ENTITLEMENT_BLOCKED**. OpenAI restricts Custom MCP servers with write/action execution tools to ChatGPT Business, Enterprise, and Edu tiers. ChatGPT Pro supports Custom MCP in Read/Fetch mode only, and Plus is not listed for full custom MCP.
+- Cloud Tunnel Status: OFF. Kept disabled until tool boundary enforcement is implemented or explicit owner risk acceptance is provided. Previous historical statuses below are preserved.
+
 ## V3.5 current status — 2026-10-30
 
 **BLOCKED pending corrected Pilot execution.** Preserved owner V3.4 result (staging-readiness-and-lock-pin, installerAttempts 0, HRESULT -2147024809) in evidence/v3.5-owner-recovery-result.json. Confirmed a recovery-code bug with a synthetic npm lock: Windows PowerShell 5.1 ConvertFrom-Json rejects packages[""] with PSArgumentException / Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand / that exact HRESULT. The old expression was Get-Content package-lock.json -Raw | ConvertFrom-Json. Exact historical Pilot failing expression is still awaiting per-operation live evidence; original vendor installer interruption remains UNKNOWN.

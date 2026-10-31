@@ -1,3 +1,13 @@
+## V3.6 current status — 2026-10-31
+
+**LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).
+- Identity: ChatHandPilot confirmed Standard User.
+- Installation: Vendor installer exit code 0, 208 release files matched, worker 0.2.50 promoted, managed tunnel client 0.0.11 validated, exact workspace policy (`sandbox`) verified, workerCap=1, doctor passed.
+- Seven Agent Skills: Pinned hashes and policies verified (systematic-debugging ASK; 6 other skills MANUAL).
+- ChatGPT Entitlement Gate: **HOST_ENTITLEMENT_BLOCKED**. Custom MCP write/action tools in ChatGPT require Business, Enterprise, or Edu workspaces. ChatGPT Pro supports Custom MCP in Read/Fetch mode only, and Plus is not listed for full custom MCP.
+- Security Gate: **GATE_OPEN / BLOCKED FOR HOSTED TUNNEL**. Shell tools (`start_process`, `interact_with_process`) are exposed in DWB beta.16 broker. Hosted Tunnel remains OFF.
+- Cloud / Tunnel: OFF. See daily operations guide below and in [RESTRICTED_PILOT_V32.th.md](RESTRICTED_PILOT_V32.th.md). Previous historical statuses below are preserved.
+
 ## V3.5 current status — 2026-10-30
 
 **BLOCKED pending corrected Pilot execution.** Preserved owner V3.4 result (staging-readiness-and-lock-pin, installerAttempts 0, HRESULT -2147024809) in evidence/v3.5-owner-recovery-result.json. Confirmed a recovery-code bug with a synthetic npm lock: Windows PowerShell 5.1 ConvertFrom-Json rejects packages[""] with PSArgumentException / Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand / that exact HRESULT. The old expression was Get-Content package-lock.json -Raw | ConvertFrom-Json. Exact historical Pilot failing expression is still awaiting per-operation live evidence; original vendor installer interruption remains UNKNOWN.

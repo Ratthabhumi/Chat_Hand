@@ -1,3 +1,10 @@
+## V3.6 current status — 2026-10-31
+
+**LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).
+- Identity: ChatHandPilot confirmed Standard User.
+- Installation: DWB beta.16, worker 0.2.50, and tunnel client 0.0.11 successfully installed under `C:\Users\ChatHandPilot\AppData\Local`.
+- Rollback: Original Remote Desktop Commander configuration remains intact and isolated as the approved fallback. DWB can be stopped cleanly using `Dwb-Pilot.ps1 -Action Stop`. Cloud Tunnel remains stopped (no key or connection active). Previous historical statuses below are preserved.
+
 ## V3.5 current status — 2026-10-30
 
 **BLOCKED pending corrected Pilot execution.** Preserved owner V3.4 result (staging-readiness-and-lock-pin, installerAttempts 0, HRESULT -2147024809) in evidence/v3.5-owner-recovery-result.json. Confirmed a recovery-code bug with a synthetic npm lock: Windows PowerShell 5.1 ConvertFrom-Json rejects packages[""] with PSArgumentException / Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand / that exact HRESULT. The old expression was Get-Content package-lock.json -Raw | ConvertFrom-Json. Exact historical Pilot failing expression is still awaiting per-operation live evidence; original vendor installer interruption remains UNKNOWN.

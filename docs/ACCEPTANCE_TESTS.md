@@ -1,3 +1,15 @@
+## V3.6 current status — 2026-10-31
+
+**LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).
+- Identity: ChatHandPilot (Standard User, not Administrator) confirmed.
+- Staging and Worker Promotion: Node JSON parser verified valid npm package-lock with empty root key `packages[""]` without dropping version, registry or SRI constraints. Worker 0.2.50 promoted without deletion/reinstall.
+- Vendor Installer: Exit code 0, 208 release files matched. DWB configuration, doctor, exact workspace policy (`sandbox`) and workerCap=1 all PASS.
+- Managed Components: Managed Worker 0.2.50 vendor-validated; Managed Tunnel Client 0.0.11 validated by vendor setup (no hosted connection).
+- Seven Agent Skills: Hashes, default policies and workspace overrides verified (systematic-debugging ASK; TDD, verification-before-completion, receiving-code-review, security-best-practices, security-threat-model, frontend-design MANUAL). Quarantined extras (golive, brag-slim) kept MANUAL.
+- Hosted Entitlement Gate: **HOST_ENTITLEMENT_BLOCKED**. Official OpenAI Custom MCP specifications limit full write/action tool servers to ChatGPT Business, Enterprise, and Edu plans. ChatGPT Pro supports Custom MCP in Read/Fetch mode only, and Plus is not listed for full custom MCP write/action tools.
+- Security Gate: **GATE_OPEN / BLOCKED FOR HOSTED TUNNEL**. Process execution tools (`start_process`, `interact_with_process`) are forwarded by DWB beta.16 broker without a tool-filtering gateway. Standard user containment protects against administrative elevation but does not confine process-level operations to `sandbox`. Hosted Tunnel remains OFF.
+- Cloud / Tunnel: OFF. No credentials published or copied. Previous historical statuses below are preserved.
+
 ## V3.5 current status — 2026-10-30
 
 **BLOCKED pending corrected Pilot execution.** Preserved owner V3.4 result (staging-readiness-and-lock-pin, installerAttempts 0, HRESULT -2147024809) in evidence/v3.5-owner-recovery-result.json. Confirmed a recovery-code bug with a synthetic npm lock: Windows PowerShell 5.1 ConvertFrom-Json rejects packages[""] with PSArgumentException / Argument,Microsoft.PowerShell.Commands.ConvertFromJsonCommand / that exact HRESULT. The old expression was Get-Content package-lock.json -Raw | ConvertFrom-Json. Exact historical Pilot failing expression is still awaiting per-operation live evidence; original vendor installer interruption remains UNKNOWN.

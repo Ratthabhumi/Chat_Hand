@@ -1,3 +1,64 @@
+# V3.6 — บันทึกผลติดตั้งผ่าน, สิทธิ์ ChatGPT และคู่มือการใช้งาน
+
+## 1. ผลการติดตั้งจริงใน ChatHandPilot (PASS)
+การติดตั้งภายใต้บัญชีสิทธิ์จำกัด **ChatHandPilot** สำเร็จเรียบร้อย:
+- สถานะ: `LOCAL INSTALLATION PASS` (ผลยืนยันจาก `results/repair-v35-result.json`)
+- ตรวจสอบไฟล์ Vendor Release: ครบทั้ง 208 ไฟล์
+- ตัวแปลง JSON ของ Node ตรวจสอบ Lockfile สำเร็จ: ยืนยัน empty root key `packages[""]` โดยคงการตรวจ Version, Registry และ SRI ครบถ้วน
+- Staging ถูกย้ายเข้าตำแหน่ง Worker เป้าหมาย (Worker 0.2.50) โดยไม่มีการลบหรือติดตั้งซ้ำ
+- Vendor Installer Exit Code: 0
+- Vendor Doctor / Workspace Sandbox Policy (`sandbox`) / Worker Cap (1): PASS
+- Managed Tunnel Client: 0.0.11 ได้รับการตรวจสอบโดย Vendor Setup
+- Agent Skills 7 ตัว: Pinned hashes, Default policies (systematic-debugging เป็น ASK, อีก 6 ตัวเป็น MANUAL) และ Workspace overrides ผ่านทั้งหมด
+- ไม่ต้องรันสคริปต์ติดตั้งหรือกู้คืนซ้ำแล้ว
+
+---
+
+## 2. ผลการตรวจสอบสิทธิ์ ChatGPT (ChatGPT Entitlement Check)
+จากการตรวจสอบข้อกำหนดทางการของ OpenAI:
+- **Full Custom MCP (รองรับ Write / Action tools เช่น แก้ไขไฟล์, รันคำสั่ง):** ปัจจุบันเปิดให้เฉพาะบัญชี **ChatGPT Business, Enterprise, และ Edu** เท่านั้น
+- **ChatGPT Pro:** รองรับ Custom MCP เฉพาะโหมด **Read / Fetch** (อ่านหรือดึงข้อมูลอย่างเดียว)
+- **ChatGPT Plus:** ยังไม่ได้ระบุเป็นแพ็กเกจที่รองรับ Full Custom MCP Action
+- **สถานะ:** `HOST_ENTITLEMENT_BLOCKED` สำหรับเป้าหมายที่ต้องการให้ ChatGPT Chat ปกติสั่งเขียน/แก้ไขไฟล์และควบคุมเครื่องผ่าน Custom MCP
+- **ข้อแนะนำ:**
+  - **ไม่ต้องเสียเงินอัปเกรดหรือซื้อ API credits เพิ่มเติม** โดยที่ยังไม่มีสิทธิ์รองรับ
+  - เก็บการติดตั้ง DWB และ Agent Skills ที่สมบูรณ์ในเครื่องนี้ไว้ เพื่อรองรับทันทีเมื่อบัญชีมีสิทธิ์ในอนาคต
+
+---
+
+## 3. ข้อพิจารณาด้านความปลอดภัย (Security Hardening Review)
+- แม้บัญชี `ChatHandPilot` จะเป็น Standard User ที่ไม่มีสิทธิ์ Administrator (ป้องกันการเข้าถึงระดับระบบ)
+- แต่ DWB beta.16 มีการส่งต่อคำสั่ง `start_process`, `interact_with_process`, `set_config_value`, `kill_process` ไปยัง Worker โดยไม่มี Built-in Tool Allowlist/Denylist กรองที่ตัว Broker
+- คำสั่ง Process สามารถรันภายใต้สิทธิ์ของ `ChatHandPilot` ซึ่งอาจเข้าถึงไฟล์ส่วนตัวของ User นั้นนอกเหนือจากโฟลเดอร์ `sandbox`
+- **การตัดสินใจ:** ปิด Hosted Tunnel ไว้เป็น **OFF** ตามหลักความปลอดภัย จนกว่าจะมีตัวกรอง Tool ที่ชัดเจน หรือได้รับการอนุมัติความเสี่ยงจาก Owner
+
+---
+
+## 4. คู่มือการใช้งานประจำวัน (Daily Operations Guide)
+รันคำสั่งเหล่านี้ใน PowerShell ภายใต้บัญชี **ChatHandPilot**:
+
+1. **ตรวจสอบสถานะ (Status):**
+   ```powershell
+   powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Status
+   ```
+2. **เปิดหน้าควบคุม (Dashboard):**
+   ```powershell
+   powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Dashboard
+   ```
+   *หมายเหตุ: หน้า Dashboard ใช้สำหรับดูสถานะในเครื่องเท่านั้น ยังไม่ต้องกดเปิด Cloud Tunnel หรือใส่ API Key*
+3. **สั่งหยุดระบบ (Stop):**
+   ```powershell
+   powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Stop
+   ```
+4. **รีสตาร์ตระบบ (Restart):**
+   ```powershell
+   powershell -NoProfile -File .\scripts\Dwb-Pilot.ps1 -Action Restart
+   ```
+5. **การกู้คืนเมื่อ Worker ค้าง (Stalled Worker Recovery):**
+   สั่ง `-Action Stop` เพื่อ drain และปิด broker จากนั้นสั่ง `-Action Restart` หรือปิดหน้าต่าง Dashboard แล้วเปิดใหม่
+
+---
+
 # V3.5 — แก้ parser แล้ว ดำเนินต่อด้วย checkpoint ใหม่
 
 ผล v34 เก็บไว้ครบ: หยุดก่อนย้าย Worker และ installerAttempts=0 พบ bug ในโค้ดกู้คืน: Windows PowerShell 5.1 ConvertFrom-Json อ่าน npm packages[""] ไม่ได้ จำลองได้ HRESULT เดียวกัน แก้ใช้ Node JSON.parse โดยยังตรวจ version/URL/SRI ครบ ผลกับ lock จริงจะถูกยืนยันใน read-only preflight ก่อนย้าย ไม่ต้องรัน Diagnostic เก่าซ้ำ
