@@ -1,3 +1,15 @@
+## V3.7 current status — 2026-11-01
+
+**DEFAULT-DENY TOOL FILTER GATEWAY PROTOTYPED AND TESTED (TASK P3).**
+- **Architecture Assessment:** DWB beta.16 contains no native server-side allowlist/denylist hooks for tool filtering between broker and worker. Standard user `ChatHandPilot` prevents elevation to Administrator, but does not prevent worker process tools (`start_process`, `interact_with_process`) from running within the user's privilege scope.
+- **Gateway Implementation:** Developed standalone MCP filter middleware in [gateway/mcp-filter-gateway.mjs](../gateway/mcp-filter-gateway.mjs):
+  - Enforces explicit allowlist on `tools/list` (strips all unapproved tools).
+  - Enforces default-deny dispatch on `tools/call` for `start_process`, `interact_with_process`, `kill_process`, `force_terminate`, `set_config_value`, `execute_code`.
+  - Confines file paths to the approved sandbox root, blocking `..` traversal and outside paths.
+  - Maintains sanitized audit logs without secret leaks.
+  - Unit tests verified in [scripts/mcp-filter-gateway.test.mjs](../scripts/mcp-filter-gateway.test.mjs).
+- **Hosted Tunnel Policy:** Remains **OFF**. No cloud activation without verified gateway integration and owner authorization.
+
 ## V3.6 current status — 2026-10-31
 
 **LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).

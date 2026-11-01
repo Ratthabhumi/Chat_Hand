@@ -1,3 +1,11 @@
+## V3.7 current status — 2026-11-01
+
+**EXECUTION-ONLY IMPLEMENTATION / DUAL-LANE ARCHITECTURE ACTIVE.**
+- **Dual-Lane Division:** Lane A (ChatGPT + GitHub Plugin) is active as primary Research Architect and repository operator. Lane B (ChatHandPilot + DWB MCP Studio) is dedicated to local sandbox execution and runtime testing on Windows.
+- **Local Acceptance Harness:** Created and verified [scripts/Invoke-PilotAcceptance.ps1](../scripts/Invoke-PilotAcceptance.ps1) and [scripts/Test-PilotAcceptance.mjs](../scripts/Test-PilotAcceptance.mjs), staged into `C:\ProgramData\ChatHandPilot-Setup\scripts\`. Tests include broker/session status, workspace binding, approved hello.txt read, outside-root and traversal denials, synthetic create/readback/delete, skills verification (7 approved skills, ASK withholding/rejection, MANUAL explicit activation), and two-session isolation.
+- **Security Hardening (Task P3):** Implemented default-deny MCP Tool Filtering Gateway prototype in [gateway/mcp-filter-gateway.mjs](../gateway/mcp-filter-gateway.mjs) with verified unit test suite [scripts/mcp-filter-gateway.test.mjs](../scripts/mcp-filter-gateway.test.mjs). Enforces explicit allowlist on both `tools/list` and `tools/call`, denies `start_process`, `interact_with_process`, `kill_process`, `force_terminate`, `set_config_value`, and confines paths to sandbox root.
+- **Hosted Entitlement & Cloud Tunnel:** Status remains **HOST_ENTITLEMENT_BLOCKED** for ChatGPT Plus/Pro. Hosted Cloud Tunnel remains **OFF**.
+
 ## V3.6 current status — 2026-10-31
 
 **LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).

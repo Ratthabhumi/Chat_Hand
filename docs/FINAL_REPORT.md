@@ -1,3 +1,11 @@
+## V3.7 current status — 2026-11-01
+
+**EXECUTION-ONLY IMPLEMENTATION / DUAL-LANE ARCHITECTURE ACTIVE.**
+- **Dual-Lane Operations:** Lane A (ChatGPT + GitHub Plugin) drives architectural research and GitHub workflow operations. Lane B (ChatHandPilot + DWB MCP Studio) executes local sandbox testing on Windows.
+- **Local Pilot Acceptance Harness:** Staged and ready in `C:\ProgramData\ChatHandPilot-Setup\scripts\` ([scripts/Invoke-PilotAcceptance.ps1](../scripts/Invoke-PilotAcceptance.ps1), [scripts/Test-PilotAcceptance.mjs](../scripts/Test-PilotAcceptance.mjs)). Single owner command prepared to run under ChatHandPilot session.
+- **Security Gateway (Task P3):** Prototype [gateway/mcp-filter-gateway.mjs](../gateway/mcp-filter-gateway.mjs) and unit tests [scripts/mcp-filter-gateway.test.mjs](../scripts/mcp-filter-gateway.test.mjs) implemented; filters both discovery and invocation of process/config tools.
+- **Entitlement & Hosted Gate:** Custom MCP write/action tools blocked on ChatGPT Plus/Pro (**HOST_ENTITLEMENT_BLOCKED**). Cloud Tunnel remains **OFF**.
+
 ## V3.6 current status — 2026-10-31
 
 **LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).

@@ -77,6 +77,8 @@ try {
     if ($LASTEXITCODE -ne 0) {throw 'Recovery transport regression failed'}
     & node --test scripts/check-staged-worker-lock.test.mjs
     if ($LASTEXITCODE -ne 0) {throw 'Worker lock validation regression failed'}
+    & node --test scripts/mcp-filter-gateway.test.mjs
+    if ($LASTEXITCODE -ne 0) {throw 'MCP filter gateway regression failed'}
     & git diff --check
     if ($LASTEXITCODE -ne 0) { throw 'Whitespace validation failed' }
     'PASS: JSON, local document links, local I/O, evaluator self-tests and whitespace.'

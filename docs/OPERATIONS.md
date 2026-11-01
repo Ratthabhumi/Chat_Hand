@@ -1,3 +1,11 @@
+## V3.7 current status — 2026-11-01
+
+**DUAL-LANE ARCHITECTURE & ABSOLUTE-PATH PILOT LAUNCHER ACTIVE.**
+- **Pilot Path Isolation:** The repository directory is owned by the main user and inaccessible to `ChatHandPilot`. All owner commands must use absolute paths in `C:\ProgramData\ChatHandPilot-Setup\scripts\` or the Pilot profile.
+- **Pilot Acceptance Runner:** Run `powershell -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Invoke-PilotAcceptance.ps1` under ChatHandPilot to execute local MCP runtime and skill acceptance.
+- **DWB Operations:** Use `C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1` with `-Action Status`, `-Action Dashboard`, `-Action Stop`, `-Action Restart`.
+- **Cloud Tunnel:** Remains OFF. Full Custom MCP write/action tools blocked on Plus/Pro (**HOST_ENTITLEMENT_BLOCKED**).
+
 ## V3.6 current status — 2026-10-31
 
 **LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING.** Verified actual owner execution result under Windows Standard User ChatHandPilot preserved in [evidence/v3.6-pilot-installation-result.json](../evidence/v3.6-pilot-installation-result.json).

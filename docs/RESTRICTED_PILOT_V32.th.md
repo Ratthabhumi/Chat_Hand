@@ -1,3 +1,59 @@
+# V3.7 — การแบ่งงานสองช่องทาง (Dual-Lane) และชุดทดสอบ Pilot Runtime
+
+## 1. กลยุทธ์การทำงานสองช่องทาง (Dual-Lane Architecture)
+ตามข้อสรุปและ Decision ใน Issue #1:
+- **Lane A (ChatGPT + GitHub Plugin):** ทำหน้าที่เป็น Research Architect และตรวจสอบ/แก้โค้ดบน GitHub โดยตรง ทำงานได้ทันทีบนแพ็กเกจ Plus
+- **Lane B (ChatHandPilot + DWB MCP Studio):** ทำงานทดสอบ Runtime, Skills, Sandbox และจำลอง MCP บนเครื่อง Windows ในสิทธิ์จำกัด โดยยัง**ปิด Hosted Tunnel** ไว้
+- **ข้อสรุปเรื่อง Full Custom MCP:** ยังติดข้อจำกัดสิทธิ์ของ ChatGPT Plus/Pro (`HOST_ENTITLEMENT_BLOCKED`) ดังนั้นจึงไม่ฝืนเปิด Tunnel และมุ่งเน้นความปลอดภัยในเครื่องก่อน
+
+---
+
+## 2. คำสั่งชุดเดียวสำหรับทดสอบ Local MCP & Skills ใน ChatHandPilot
+เมื่อสลับไปที่หน้าต่าง PowerShell ภายใต้บัญชี **ChatHandPilot** ให้คัดลอกคำสั่งนี้ไปรันได้ทันที:
+
+```powershell
+$p='C:\ProgramData\ChatHandPilot-Setup\scripts\Invoke-PilotAcceptance.ps1'
+if ((Get-FileHash -LiteralPath $p).Hash -ne '0D2CF015EA4CD5B6484AF0AD7160ABD665D8EB3AF6699318D1CD4A7B3A9341F6') { throw 'Hash mismatch; stop.' }
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+```
+
+คำสั่งนี้จะทดสอบ:
+1. การเชื่อมต่อ Broker และ Session ของ DWB
+2. การผูก Workspace Sandbox
+3. การอ่านไฟล์จำลอง `hello.txt`
+4. การปฏิเสธการอ่านไฟล์นอก Sandbox และการดักจับ Path Traversal
+5. การสร้าง, อ่านกลับ และลบไฟล์ทดสอบแบบปลอดภัย
+6. ตรวจสอบสถานะการเปิดของ Process tools (`start_process`, `kill_process`)
+7. ตรวจสอบ Agent Skills ทั้ง 7 ตัว (ASK withholding, Rejection, Explicit Activation)
+8. การทดสอบแยก 2 Session
+9. การสั่ง Graceful Stop และ Restart ของระบบ
+
+ผลการทดสอบจะถูกบันทึกที่ `C:\ProgramData\ChatHandPilot-Setup\results\acceptance-v37-result.json`
+
+---
+
+## 3. คู่มือการใช้งาน DWB ประจำวัน (Absolute Paths)
+เนื่องจากโฟลเดอร์ Repository หลักอยู่ในบัญชีหลักที่ Pilot เข้าถึงไม่ได้ คำสั่งทั้งหมดใน Pilot จึงใช้ Absolute Path:
+
+1. **ตรวจสอบสถานะ:**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Status
+   ```
+2. **เปิดหน้าจอ Dashboard:**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Dashboard
+   ```
+3. **สั่งหยุดระบบ (Stop):**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Stop
+   ```
+4. **รีสตาร์ตระบบ (Restart):**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Restart
+   ```
+
+---
+
 # V3.6 — บันทึกผลติดตั้งผ่าน, สิทธิ์ ChatGPT และคู่มือการใช้งาน
 
 ## 1. ผลการติดตั้งจริงใน ChatHandPilot (PASS)
