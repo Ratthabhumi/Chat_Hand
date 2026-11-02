@@ -1,12 +1,14 @@
-# Chat_Hand — Final Unified Workflow (Quota Fallback Architecture)
+# Chat_Hand: Final Quota Fallback MVP — GitHub + Windows Remote + Source-Guided Skills
 
-### Status Model
-- **`QUOTA_FALLBACK_MVP`**: **`READY`** — ChatGPT uses connected GitHub and Remote Desktop Commander to research, analyze, edit, and test workflows without Codex dependence.
+### Final Capability Status Model
+- **`QUOTA_FALLBACK_MVP`**: **`READY_FOR_OWNER_ACCEPTANCE`** — ChatGPT uses connected GitHub and Remote Desktop Commander to research, analyze, edit, and test workflows without Codex dependence.
 - **`CHATGPT_GITHUB`**: **`VERIFIED`** — Directly operational for repository inspection, code review, commits, and PR actions.
-- **`CHATGPT_WINDOWS_REMOTE`**: **`VERIFIED`** — Remote Desktop Commander v0.3.1 ONLINE. Recommended owner action: change ChatGPT plugin permissions to "Allow read actions" or "Always ask" to prevent unrestricted automated execution.
+- **`CHATGPT_WINDOWS_REMOTE`**: **`VERIFIED`** — Remote Desktop Commander v0.3.1 ONLINE. Recommended owner action: change ChatGPT plugin permissions to "Allow read actions" or "Always ask".
 - **`CHATGPT_SKILLS`**: **`SOURCE_GUIDED`** — Pinned, reviewed Skills available via GitHub source without requiring DWB runtime invocation.
 - **`DWB_LOCAL`**: **`VERIFIED`** — Installed and doctor-validated under `ChatHandPilot`. Main-account DWB confirmed **ABSENT** (no reinstallation required).
-- **`DWB_HOSTED`**: **`BLOCKED`** — Full Custom MCP write/action tools restricted by OpenAI to Business/Enterprise/Edu. Cloud Tunnel remains **OFF**.
+- **`DWB_HOSTED`**: **`BLOCKED / OPTIONAL`** — Full Custom MCP write/action tools restricted by OpenAI to Business/Enterprise/Edu. Cloud Tunnel remains **OFF**.
+- **`CHATGPT_HOST_E2E`**: **`PENDING_OWNER_SMOKE_TEST`** — Single reversible smoke test ready for owner execution from ordinary ChatGPT Chat.
+- **`PR_STATUS`**: **`READY_FOR_OWNER_MERGE_REVIEW`** — PR #2 ready for final merge review.
 
 See [Thai Operations & Unified Quick Start Guide](docs/RESTRICTED_PILOT_V32.th.md).
 

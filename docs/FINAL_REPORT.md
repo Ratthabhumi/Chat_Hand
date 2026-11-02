@@ -1,3 +1,32 @@
+## Final Project Closure — 2026-11-02
+
+### 1. Closeout Executive Summary
+- **Overall MVP Verdict:** **`QUOTA_FALLBACK_MVP: READY_FOR_OWNER_ACCEPTANCE`**
+- **Draft PR #2 Status:** **`READY_FOR_OWNER_MERGE_REVIEW`** (All 70 files verified intentional; historical evidence preserved; Windows CI 2/2 PASS).
+- **Core Mission Achieved:** When Codex quota is exhausted, ordinary ChatGPT can independently continue repository research, code review, file editing, PR management, and Windows execution via connected GitHub and Remote Desktop Commander apps.
+- **DWB Hosted Status:** Maintained as **`BLOCKED / OPTIONAL`**. DWB runtime is preserved in `ChatHandPilot` for optional local MCP usage, but hosted cloud tunnel is kept **OFF** due to OpenAI Custom MCP write restrictions on Plus/Pro.
+
+### 2. Final Capability Status Matrix
+| Capability | Status | Evidence & Operational Scope |
+|---|---|---|
+| **QUOTA_FALLBACK_MVP** | **READY_FOR_OWNER_ACCEPTANCE** | Complete daily workflow operates via ChatGPT + GitHub + Remote Desktop Commander without Codex. |
+| **CHATGPT_GITHUB** | **VERIFIED** | Connected app directly performs repository read, commit, PR, and CI actions. |
+| **CHATGPT_WINDOWS_REMOTE** | **VERIFIED** | Remote Desktop Commander v0.3.1 ONLINE; owner instructed to set permissions to "Allow read actions" / "Always ask". |
+| **CHATGPT_SKILLS** | **SOURCE_GUIDED** | Seven pinned skills referenced directly via GitHub markdown without requiring local DWB runtime. |
+| **DWB_LOCAL** | **VERIFIED** | Vendor setup exit code 0, 208 release files, worker 0.2.50, doctor PASS in `ChatHandPilot`. Main account confirmed ABSENT. |
+| **DWB_HOSTED** | **BLOCKED / OPTIONAL** | Cloud tunnel kept OFF. Custom MCP write tools require Business/Enterprise/Edu tiers. |
+| **CHATGPT_HOST_E2E** | **PENDING_OWNER_SMOKE_TEST** | Ready for owner to execute one reversible test in ordinary ChatGPT Chat. |
+
+### 3. Reversible Owner Smoke Test Specification (Phase 5)
+The owner can execute this single test in ordinary ChatGPT Chat to complete formal acceptance:
+1. ChatGPT uses GitHub app to inspect `sandbox/hello.txt`.
+2. ChatGPT uses Remote Desktop Commander to append a harmless comment: `# Verified by ChatGPT at <ISO-timestamp>`.
+3. ChatGPT reads back the file to verify the modification.
+4. ChatGPT reverts the file to its original content.
+5. ChatGPT calls GitHub app to verify git working tree is clean.
+
+---
+
 ## V3.7 current status — 2026-11-01
 
 **EXECUTION-ONLY IMPLEMENTATION / DUAL-LANE ARCHITECTURE ACTIVE.**

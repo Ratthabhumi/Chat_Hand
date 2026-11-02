@@ -9,7 +9,19 @@
 
 ---
 
-## 2. คำสั่งชุดเดียวสำหรับทดสอบ Local Pilot Acceptance (แก้ Harness แล้ว)
+## 2. การทดสอบยืนยันครั้งสุดท้ายจาก ChatGPT (Reversible Smoke Test)
+ให้คุณเปิดแชทปกติใน ChatGPT แล้วสั่งงานเพื่อทดสอบการทำงานข้ามระบบโดยไม่พึ่งพา Codex:
+1. สั่งให้ ChatGPT ใช้ **GitHub Plugin** อ่านเนื้อหาไฟล์ `sandbox/hello.txt`
+2. สั่งให้ ChatGPT ใช้ **Remote Desktop Commander** เพิ่มบรรทัดข้อความทดสอบชั่วคราวลงในไฟล์ `sandbox/hello.txt`
+3. สั่งให้อ่านไฟล์กลับมาเพื่อยืนยันการบันทึก
+4. สั่งให้ลบข้อความทดสอบออกเพื่อคืนค่าเนื้อหาเดิม
+5. สั่งให้ตรวจสอบสถานะ Repository ผ่าน GitHub Plugin เพื่อยืนยันว่า working tree สะอาดเรียบร้อย
+
+เมื่อการทดสอบนี้ผ่าน คุณสามารถอนุมัติ Merge PR #2 และปิด Issue #1 ได้ทันที
+
+---
+
+## 3. คำสั่งชุดเดียวสำหรับทดสอบ Local Pilot Acceptance (แก้ Harness แล้ว)
 เมื่อสลับไปที่หน้าต่าง PowerShell ภายใต้บัญชี **ChatHandPilot** ให้คัดลอกคำสั่งนี้ไปรันได้ทันที:
 
 ```powershell
@@ -20,7 +32,7 @@ powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
 
 ---
 
-## 3. คำสั่งควบคุม DWB ประจำวันผ่าน Absolute Paths (ใน ChatHandPilot)
+## 4. คำสั่งควบคุม DWB ประจำวันผ่าน Absolute Paths (ใน ChatHandPilot)
 1. **ตรวจสอบสถานะ:**
    ```powershell
    powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Status

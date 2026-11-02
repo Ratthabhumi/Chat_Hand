@@ -1,3 +1,16 @@
+## Final Project Acceptance Matrix — 2026-11-02
+
+- **`QUOTA_FALLBACK_MVP`**: **`READY_FOR_OWNER_ACCEPTANCE`**
+- **`CHATGPT_GITHUB`**: **`VERIFIED`** (Repo exploration, commit, PR, CI via connected plugin).
+- **`CHATGPT_WINDOWS_REMOTE`**: **`VERIFIED`** (Connector v0.3.1 ONLINE; pending owner permission review to "Allow read actions" / "Always ask").
+- **`CHATGPT_SKILLS`**: **`SOURCE_GUIDED`** (7 pinned skills accessible via GitHub repository).
+- **`DWB_LOCAL`**: **`VERIFIED`** (Pilot installation exit 0, doctor PASS; main account confirmed ABSENT).
+- **`DWB_HOSTED`**: **`BLOCKED / OPTIONAL`** (Cloud Tunnel OFF; OpenAI Custom MCP write tools restricted to Business/Enterprise/Edu).
+- **`CHATGPT_HOST_E2E`**: **`PENDING_OWNER_SMOKE_TEST`** (Ready for owner to run single reversible test from ChatGPT).
+- **`PR_STATUS`**: **`READY_FOR_OWNER_MERGE_REVIEW`** (PR #2 ready for final merge review).
+
+---
+
 ## V3.7 current status — 2026-11-01
 
 **EXECUTION-ONLY IMPLEMENTATION / DUAL-LANE ARCHITECTURE ACTIVE.**
