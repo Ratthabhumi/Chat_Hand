@@ -1,3 +1,28 @@
+## Final Unified Workflow Security Review — 2026-11-01
+
+### 1. Remote Desktop Commander v0.3.1 Security Hardening (Task 1)
+- **Current Observation:** Remote Desktop Commander v0.3.1 is ONLINE with plugin permissions set to `Allow all actions`, `allowedDirectories: []` (unrestricted filesystem scope), and default shell `powershell.exe`.
+- **Identified Risk:**
+  - Upstream documentation explicitly warns that directory restrictions do not constrain commands executed in terminal tools.
+  - A 33-command blocklist does not constitute an operating system sandbox.
+  - With "Allow all actions", ChatGPT could execute filesystem modifications or shell invocations autonomously without interactive confirmation.
+- **Mandatory Mitigation:**
+  - **Owner Action:** In ChatGPT **Settings → Plugins → Remote Desktop Commander**, change permission from *Allow all actions* to **Allow read actions** or **Always ask**.
+  - This preserves read access for investigation while enforcing explicit human-in-the-loop authorization before any write, deletion, or process execution.
+  - Keep production repositories (ACASH, -SEED, EIMS, Agent OS) outside broad agent write scope.
+
+### 2. Main-Account DWB Inspection (Task 2)
+- Inspection of `%LOCALAPPDATA%` under main account `MewMew` confirmed that DWB beta.16 runtime is **ABSENT**.
+- DWB runtime resides solely in `C:\Users\ChatHandPilot\AppData\Local\ChatHand\DWB-beta16`.
+- Main account does not require DWB reinstallation; the primary quota-fallback path operates via ChatGPT + GitHub + Remote Desktop Commander.
+
+### 3. Gateway Containment Status (Task 4)
+- `gateway/mcp-filter-gateway.mjs` is an experimental prototype with offline unit tests.
+- It is **NOT** installed in the active MCP transport path and must **NOT** be deployed to production or exposed to the internet.
+- No unverified bridge or middleware will be introduced into the live connection.
+
+---
+
 ## V3.7 current status — 2026-11-01
 
 **DEFAULT-DENY TOOL FILTER GATEWAY PROTOTYPED AND TESTED (TASK P3).**

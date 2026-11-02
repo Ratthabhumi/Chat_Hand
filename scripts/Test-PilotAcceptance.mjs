@@ -167,7 +167,9 @@ try {
 
     const withExplicit = await callA('skills', { action: 'activate', skill: testSkill, explicit_user_request: true });
     const withExplicitData = withExplicit.structuredContent || JSON.parse(withExplicit.content.find(c => c.type === 'text').text);
-    report.tests.manualExplicitActivation = (withExplicitData.status === 'active' && typeof withExplicitData.instructions === 'string') ? 'PASS' : 'FAIL';
+    report.tests.manualExplicitActivation = (withExplicitData.status === 'active' && typeof withExplicitData.instructions === 'string')
+      ? 'PASS: protocol instruction delivery (client-supplied explicit flag; does not substitute for independent human authorization)'
+      : 'FAIL';
 
     // Test ASK policy with systematic-debugging
     const askRes = await callA('skills', { action: 'activate', skill: 'systematic-debugging' });
@@ -188,7 +190,12 @@ try {
   // 10. Two logical sessions isolation
   const bindB = await callB('workspace', { action: 'bind', path: workspace });
   const sessionB = await callB('dwb_session_status');
-  report.tests.twoSessionSeparation = (!bindB.isError && !sessionB.isError) ? 'PASS' : 'FAIL';
+  const sessionAData = sessionA.structuredContent || JSON.parse((sessionA.content || []).find(c => c.type === 'text')?.text || '{}');
+  const sessionBData = sessionB.structuredContent || JSON.parse((sessionB.content || []).find(c => c.type === 'text')?.text || '{}');
+  const hasDistinctIds = sessionAData.sessionId && sessionBData.sessionId && sessionAData.sessionId !== sessionBData.sessionId;
+  report.tests.twoSessionSeparation = (!bindB.isError && !sessionB.isError)
+    ? (hasDistinctIds ? 'PASS: distinct session IDs verified' : 'PARTIAL: independent session bindings verified; strict session ID separation unconfirmed')
+    : 'FAIL';
 
 } catch (err) {
   report.tests.overallError = `ERROR: ${err.message}`;

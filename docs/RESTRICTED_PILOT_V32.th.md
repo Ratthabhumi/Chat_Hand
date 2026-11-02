@@ -1,3 +1,45 @@
+# คู่มือสถาปัตยกรรมรวมและแนวทางปฏิบัติประจำวัน (Final Unified Workflow)
+
+## 1. วิธีทำงานจริงเมื่อโควตา Codex หมด (ไม่ต้องพึ่ง Codex)
+1. **ChatGPT + GitHub Plugin:** ใช้ ChatGPT Chat ปกติในการค้นคว้า, ออกแบบฟีเจอร์, ตรวจ PR, และจัดการ Commit ขึ้น GitHub
+2. **ChatGPT + Remote Desktop Commander (v0.3.1):** ใช้จัดการไฟล์และรันคำสั่งบนเครื่อง Windows เมื่อจำเป็น
+   - **คำแนะนำความปลอดภัยเร่งด่วน:** ให้เข้าไปที่ **Settings → Plugins → Remote Desktop Commander** บน ChatGPT แล้วเปลี่ยนสิทธิ์จาก *Allow all actions* เป็น **Allow read actions** หรือ **Always ask** เพื่อป้องกันคำสั่งถูกรันอัตโนมัติโดยไม่มีการยืนยัน
+3. **Agent Skills:** เรียกดูเนื้อหาและทำตามคำแนะนำจากไฟล์ Markdown บน GitHub (โฟลเดอร์ `skills/` หรือ [docs/AGENT_SKILLS.md](AGENT_SKILLS.md)) โดยไม่ต้องเปิด DWB Runtime
+4. **DWB MCP Studio ใน ChatHandPilot:** เป็น Runtime สำรองสำหรับงานที่ต้องการ Broker, Sandbox, หรือ Session พิเศษ โดยเปิดเฉพาะเมื่อต้องการและ**ยังคงปิด Cloud Tunnel ไว้**
+
+---
+
+## 2. คำสั่งชุดเดียวสำหรับทดสอบ Local Pilot Acceptance (แก้ Harness แล้ว)
+เมื่อสลับไปที่หน้าต่าง PowerShell ภายใต้บัญชี **ChatHandPilot** ให้คัดลอกคำสั่งนี้ไปรันได้ทันที:
+
+```powershell
+$p='C:\ProgramData\ChatHandPilot-Setup\scripts\Invoke-PilotAcceptance.ps1'
+if ((Get-FileHash -LiteralPath $p).Hash -ne '2C149A36E0A0948D02F8D1A9035F1C254C8E0421C9E7C53B5FF66F45EE30A51A') { throw 'Hash mismatch; stop.' }
+powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+```
+
+---
+
+## 3. คำสั่งควบคุม DWB ประจำวันผ่าน Absolute Paths (ใน ChatHandPilot)
+1. **ตรวจสอบสถานะ:**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Status
+   ```
+2. **เปิดหน้าจอ Dashboard:**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Dashboard
+   ```
+3. **สั่งหยุดระบบ (Stop):**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Stop
+   ```
+4. **รีสตาร์ตระบบ (Restart):**
+   ```powershell
+   powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Restart
+   ```
+
+---
+
 # V3.7 — การแบ่งงานสองช่องทาง (Dual-Lane) และชุดทดสอบ Pilot Runtime
 
 ## 1. กลยุทธ์การทำงานสองช่องทาง (Dual-Lane Architecture)

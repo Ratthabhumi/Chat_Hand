@@ -1,3 +1,17 @@
+# Chat_Hand — Final Unified Workflow (Quota Fallback Architecture)
+
+### Status Model
+- **`QUOTA_FALLBACK_MVP`**: **`READY`** — ChatGPT uses connected GitHub and Remote Desktop Commander to research, analyze, edit, and test workflows without Codex dependence.
+- **`CHATGPT_GITHUB`**: **`VERIFIED`** — Directly operational for repository inspection, code review, commits, and PR actions.
+- **`CHATGPT_WINDOWS_REMOTE`**: **`VERIFIED`** — Remote Desktop Commander v0.3.1 ONLINE. Recommended owner action: change ChatGPT plugin permissions to "Allow read actions" or "Always ask" to prevent unrestricted automated execution.
+- **`CHATGPT_SKILLS`**: **`SOURCE_GUIDED`** — Pinned, reviewed Skills available via GitHub source without requiring DWB runtime invocation.
+- **`DWB_LOCAL`**: **`VERIFIED`** — Installed and doctor-validated under `ChatHandPilot`. Main-account DWB confirmed **ABSENT** (no reinstallation required).
+- **`DWB_HOSTED`**: **`BLOCKED`** — Full Custom MCP write/action tools restricted by OpenAI to Business/Enterprise/Edu. Cloud Tunnel remains **OFF**.
+
+See [Thai Operations & Unified Quick Start Guide](docs/RESTRICTED_PILOT_V32.th.md).
+
+---
+
 V3.7: **EXECUTION-ONLY IMPLEMENTATION / DUAL-LANE ARCHITECTURE ACTIVE**. Lane A (ChatGPT + GitHub Plugin) active for research, review, and repository actions. Lane B (ChatHandPilot + DWB MCP Studio) active for local sandbox testing. Cloud Tunnel kept OFF (hosted entitlement blocked for full write/action tools on Plus/Pro; broker tool filtering gate open). Implemented focused pilot acceptance harness ([scripts/Invoke-PilotAcceptance.ps1](scripts/Invoke-PilotAcceptance.ps1), [scripts/Test-PilotAcceptance.mjs](scripts/Test-PilotAcceptance.mjs)) and tested default-deny MCP Tool Filter Gateway ([gateway/mcp-filter-gateway.mjs](gateway/mcp-filter-gateway.mjs)). See [Thai operations and pilot test guide](docs/RESTRICTED_PILOT_V32.th.md).
 
 V3.6: **LOCAL INSTALLATION PASS / RUNTIME AND HOSTED ACCEPTANCE PENDING**. ChatHandPilot vendor installation passed under corrected Node lock parser (exit code 0, 208 release files matched, managed worker 0.2.50 validated, managed tunnel 0.0.11 validated, 7 agent skills policies validated, doctor/exact workspace/workerCap PASS). Preserved evidence in [evidence/v3.6-pilot-installation-result.json](evidence/v3.6-pilot-installation-result.json). Hosted entitlement check: **HOST_ENTITLEMENT_BLOCKED** for full MCP write/action capabilities on Plus/Pro (OpenAI limits Custom MCP full write tools to Business/Enterprise/Edu). Cloud stays OFF. See [Thai operations guide](docs/RESTRICTED_PILOT_V32.th.md). Earlier statuses below are historical.

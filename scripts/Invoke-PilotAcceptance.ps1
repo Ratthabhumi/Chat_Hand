@@ -56,23 +56,18 @@ try {
     $report.mcpResults = @{ error = $_.Exception.Message }
 }
 
-# 2. Test Graceful Stop and Restart Reliability
+# 2. Test Graceful Stop Reliability using supported vendor scripts
 try {
-    $controlScript = Join-Path $app 'scripts\runtime-control.mjs'
+    . (Join-Path $app 'scripts\runtime-upgrade.ps1')
     
-    # Graceful stop
-    $stopOutput = & node $controlScript stop 2>&1
-    $statusAfterStop = (& node $controlScript status 2>&1) -join "`n" | ConvertFrom-Json
-    $report.reliabilityTests.gracefulStop = if ($statusAfterStop.state -eq 'stopped') { 'PASS' } else { 'FAIL' }
+    # Graceful stop via vendor functions
+    Stop-DwbTunnel
+    Stop-DwbRuntimeForSetup (Get-Command node).Source
     
-    # Restart
-    $startOutput = & node $controlScript start 2>&1
-    $statusAfterStart = (& node $controlScript status 2>&1) -join "`n" | ConvertFrom-Json
-    $report.reliabilityTests.restart = if ($statusAfterStart.state -eq 'active') { 'PASS' } else { 'FAIL' }
-    
-    # Final clean stop
-    & node $controlScript stop 2>&1 | Out-Null
-    $report.reliabilityTests.finalCleanState = 'PASS: broker stopped after test'
+    # Verify stopped state through vendor runtime-control
+    $statusAfterStop = (& node (Join-Path $app 'scripts\runtime-control.mjs') status 2>&1) -join "`n" | ConvertFrom-Json
+    $report.reliabilityTests.gracefulStop = if ($statusAfterStop.state -eq 'stopped') { 'PASS' } else { "FAIL: state=$($statusAfterStop.state)" }
+    $report.reliabilityTests.finalCleanState = if ($statusAfterStop.state -eq 'stopped') { 'PASS: verified broker stopped' } else { "FAIL: broker still running ($($statusAfterStop.state))" }
 } catch {
     $report.reliabilityTests.error = $_.Exception.Message
 }

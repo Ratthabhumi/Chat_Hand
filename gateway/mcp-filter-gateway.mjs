@@ -1,5 +1,7 @@
-// Chat_Hand V3.7 Default-Deny MCP Tool Filtering Gateway
-// Enforces tool allowlisting and sandboxing for both tool discovery (tools/list) and dispatch (tools/call).
+// EXPERIMENTAL PROTOTYPE ONLY - DO NOT DEPLOY TO PRODUCTION OR EXPOSE TO INTERNET
+// This gateway prototype was created for offline evaluation of tool filtering concepts.
+// It is NOT installed in the active MCP transport path. Path validation is synthetic and
+// does not constitute a hardened Windows OS filesystem boundary.
 
 import path from 'node:path';
 

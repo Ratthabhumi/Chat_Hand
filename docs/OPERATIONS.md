@@ -1,3 +1,36 @@
+## Final Unified Daily Operations Guide — 2026-11-01
+
+### 1. Daily Operations Without Codex (Primary Workflow)
+When Codex quota is depleted or for standard daily development:
+1. **Research & Planning:** Use ordinary ChatGPT Chat to explore ideas, design features, and create structured implementation packets.
+2. **Repository Actions:** Use the connected **GitHub Plugin** to inspect files, review pull requests, create commits, and trigger CI workflows.
+3. **Windows Operations:** Use connected **Remote Desktop Commander v0.3.1** for authorized Windows filesystem actions.
+   - *Security Requirement:* Set plugin permission in ChatGPT Settings to **Allow read actions** or **Always ask**.
+4. **Skills Access:** Directly reference instructions from pinned GitHub paths (e.g. `docs/AGENT_SKILLS.md` and `skills/`) without launching local DWB runtime.
+
+### 2. Optional DWB Runtime Operations (Under ChatHandPilot)
+When DWB workspace or session features are specifically required:
+- **Status:** `powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Status`
+- **Dashboard:** `powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Dashboard`
+- **Graceful Stop:** `powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Stop`
+- **Restart:** `powershell.exe -NoProfile -File C:\ProgramData\ChatHandPilot-Setup\scripts\Dwb-Pilot.ps1 -Action Restart`
+- **Acceptance Harness:**
+  ```powershell
+  $p='C:\ProgramData\ChatHandPilot-Setup\scripts\Invoke-PilotAcceptance.ps1'
+  if ((Get-FileHash -LiteralPath $p).Hash -ne '2C149A36E0A0948D02F8D1A9035F1C254C8E0421C9E7C53B5FF66F45EE30A51A') { throw 'Hash mismatch; stop.' }
+  powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File $p
+  ```
+
+### 3. Reversible Synthetic Smoke Test (Task 5)
+To verify end-to-end quota fallback without Codex:
+1. ChatGPT reads `sandbox/hello.txt` via Remote Desktop Commander.
+2. ChatGPT writes a synthetic verification line: `# Verified by ChatGPT at <timestamp>`.
+3. ChatGPT reads back the file to confirm exact content.
+4. ChatGPT reverts `sandbox/hello.txt` to original content.
+5. ChatGPT calls GitHub plugin to confirm git working tree is clean.
+
+---
+
 ## V3.7 current status — 2026-11-01
 
 **DUAL-LANE ARCHITECTURE & ABSOLUTE-PATH PILOT LAUNCHER ACTIVE.**
