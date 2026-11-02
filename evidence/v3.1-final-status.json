@@ -1,0 +1,7 @@
+{
+    "broker":  "stopped",
+    "tunnel":  "stopped",
+    "tunnelReady":  false,
+    "version":  "0.1.0-beta.16",
+    "cloudAcceptance":  "NOT VERIFIED"
+}

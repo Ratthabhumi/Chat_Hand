@@ -1,0 +1,100 @@
+[
+  {
+    "component": "core",
+    "package": "body-parser",
+    "severity": "high",
+    "title": "body-parser vulnerable to Denial of Service via trailing bytes after a compressed request body",
+    "url": "https://github.com/advisories/GHSA-27r3-jxmh-p828"
+  },
+  {
+    "component": "core",
+    "package": "fast-uri",
+    "severity": "moderate",
+    "title": "fast-uri vulnerable to URI scheme spoofing via percent-encoded scheme decoding",
+    "url": "https://github.com/advisories/GHSA-w74x-v6f9-j3xg"
+  },
+  {
+    "component": "core",
+    "package": "fast-uri",
+    "severity": "low",
+    "title": "fast-uri vulnerable to improper path equivalence in relative reference normalization",
+    "url": "https://github.com/advisories/GHSA-xhq7-xmqj-769h"
+  },
+  {
+    "component": "core",
+    "package": "fast-uri",
+    "severity": "moderate",
+    "title": "fast-uri vulnerable to host confusion via unchecked WHATWG host canonicalization",
+    "url": "https://github.com/advisories/GHSA-wjr9-j795-jxcr"
+  },
+  {
+    "component": "core",
+    "package": "fast-uri",
+    "severity": "low",
+    "title": "fast-uri vulnerable to scheme injection via an unescaped first-segment colon in suffix references",
+    "url": "https://github.com/advisories/GHSA-333x-w4r6-6crp"
+  },
+  {
+    "component": "core",
+    "package": "hono",
+    "severity": "moderate",
+    "title": "Hono: `serveStatic` decodes the request path a second time, leading to bypass of middleware on static paths",
+    "url": "https://github.com/advisories/GHSA-5r4p-p66f-jhc7"
+  },
+  {
+    "component": "core",
+    "package": "ip-address",
+    "severity": "moderate",
+    "title": "ip-address: Address6 matches a zone identifier in quadratic time ahead of its length limit, allowing a single long string to stall the process",
+    "url": "https://github.com/advisories/GHSA-rxp7-6hxx-x8q5"
+  },
+  {
+    "component": "core",
+    "package": "qs",
+    "severity": "moderate",
+    "title": "qs : qs.stringify with arrayFormat 'comma' throws an uncaught TypeError on array elements carrying a non-callable own toString (DoS)",
+    "url": "https://github.com/advisories/GHSA-6pq8-jhm2-2vcw"
+  },
+  {
+    "component": "core",
+    "package": "zod",
+    "severity": "high",
+    "title": "Zod can exhaust memory while validating oversized constrained collections",
+    "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5"
+  },
+  {
+    "component": "worker",
+    "package": "sharp",
+    "severity": "high",
+    "title": "sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591",
+    "url": "https://github.com/advisories/GHSA-f88m-g3jw-g9cj"
+  },
+  {
+    "component": "worker",
+    "package": "sharp",
+    "severity": "high",
+    "title": "sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545",
+    "url": "https://github.com/advisories/GHSA-rgj7-g3m4-5g8c"
+  },
+  {
+    "component": "worker",
+    "package": "sharp",
+    "severity": "high",
+    "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+    "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w"
+  },
+  {
+    "component": "worker",
+    "package": "uuid",
+    "severity": "moderate",
+    "title": "uuid: Missing buffer bounds check in v3/v5/v6 when buf is provided",
+    "url": "https://github.com/advisories/GHSA-w5hq-g745-h8pq"
+  },
+  {
+    "component": "worker",
+    "package": "zod",
+    "severity": "high",
+    "title": "Zod can exhaust memory while validating oversized constrained collections",
+    "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5"
+  }
+]

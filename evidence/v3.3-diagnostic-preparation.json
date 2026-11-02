@@ -1,0 +1,21 @@
+{
+  "dateLocal": "2026-10-29",
+  "rootCause": "UNKNOWN: pilot private process/lock/staging/log evidence pending",
+  "diagnosticSha256": "110DCCE1B9FA94B53C4E5B66DD0A510347F4EC489D7C747A52048DD0A04CAAE9",
+  "originalFixtureExistsFromOwner": true,
+  "originalFixturePilotResult": "MISSING_OR_HIDDEN_PATH_NOT_PASS",
+  "newProtectedFixtureReadableByOriginal": true,
+  "newProtectedFixtureInheritanceProtected": true,
+  "newProtectedFixtureGrantRoles": [
+    "Original creator",
+    "SYSTEM",
+    "Administrators"
+  ],
+  "pilotEffectiveDenial": "NOT TESTED",
+  "privateProfileAclChanged": false,
+  "installerRetried": false,
+  "cloudStarted": false,
+  "sourceInvestigation": "Local beta.16 setup-install/external-common/setup-common inspected; pinned npm install precedes checksummed tunnel download; normal catch writes result. Invoke-DwbNode forwards stderr even after successful child exit; wrapper has Stop plus native all-stream redirection. Possible stderr-wrapper failure requires pilot log evidence, not confirmed.",
+  "processOwnerObservation": "Main account snapshot includes an unresolved PowerShell owner; no inference of absent installer",
+  "sourcePayload": "Original 39 manifest entries unchanged; v33 diagnostic and synthetic fixtures are separate additions"
+}

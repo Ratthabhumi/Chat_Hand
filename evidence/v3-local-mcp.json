@@ -1,0 +1,22 @@
+{
+  "observedUtc": "2026-10-28T18:21:00.401Z",
+  "host": "Local MCP stdio client from Codex; NOT ordinary ChatGPT Chat",
+  "workerCap": 1,
+  "tests": {
+    "brokerStatus": "PASS",
+    "sessionStatus": "PASS",
+    "workspaceBind": "PASS",
+    "fixtureRead": "PASS",
+    "outsideReadDenied": "PASS",
+    "traversalDenied": "PASS",
+    "junctionDenied": "PASS",
+    "shellDisabled": "FAIL: process tools exposed; OS boundary not established",
+    "writeReadbackDelete": "BLOCKED: do not proceed past unresolved shell/security gate",
+    "chatHostTunnel": "BLOCKED: owner credentials, permissions and shell boundary required",
+    "twoChatSessions": "NOT TESTED"
+  },
+  "exposedProcessTools": [
+    "start_process",
+    "interact_with_process"
+  ]
+}

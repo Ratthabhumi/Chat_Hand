@@ -1,0 +1,6 @@
+{
+    "result":  "PASS",
+    "checkedFiles":  39,
+    "officialArchiveDigest":  "MATCH",
+    "scope":  "Read-only source-payload check, not effective pilot access or runtime/OS containment"
+}

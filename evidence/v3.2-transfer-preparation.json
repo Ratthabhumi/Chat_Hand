@@ -1,0 +1,21 @@
+{
+  "observedDateLocal": "2026-10-29",
+  "neutralLocation": "%PROGRAMDATA%/ChatHandPilot-Setup",
+  "owner": "Original account (not published)",
+  "inheritanceProtected": true,
+  "pilotPayloadAccess": "ReadAndExecute",
+  "pilotResultDirectoryAccess": "Modify",
+  "broadUsersEveryoneGrants": 0,
+  "trustedArchiveSha256": "cd94f308829515f9a4e3d381c9f9266859124bfb47f47aeda9992377f0c19de2",
+  "skillPackages": 7,
+  "payloadFiles": 39,
+  "bootstrapSha256": "83120fd741c1bb9f5c5f35865f734ca85a058706ce11542310d665ce2e92d659",
+  "copiedSecrets": false,
+  "copiedOldNodeModules": false,
+  "copiedSessionsOrDpapi": false,
+  "effectivePilotAccess": "NOT TESTED until owner runs bootstrap under pilot token",
+  "protectedFixture": "New harmless file, primary-owner/System/Administrators only; no private file read",
+  "accountOrExistingProfileAclChanged": false,
+  "broadUsersEveryoneGrantsOnTransferredFiles": 0,
+  "wrongIdentityGuard": "PASS: original-account Windows PowerShell exits 2 before bootstrap writes"
+}

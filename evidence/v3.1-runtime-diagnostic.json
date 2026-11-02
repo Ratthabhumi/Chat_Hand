@@ -1,0 +1,9 @@
+{
+  "state": "running",
+  "activeWorkers": 0,
+  "startingWorkers": 0,
+  "attachedSessions": 0,
+  "inFlightCalls": 0,
+  "queueDepth": 0,
+  "matches": true
+}

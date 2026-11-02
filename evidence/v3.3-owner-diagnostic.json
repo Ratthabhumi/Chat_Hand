@@ -1,0 +1,17 @@
+{
+    "status":  "DIAGNOSTIC_ONLY",
+    "installationRetried":  false,
+    "cloudStarted":  false,
+    "checks":  {
+                   "nodeCommandAvailable":  true,
+                   "appPackagePresent":  true,
+                   "configurationPresent":  false,
+                   "vendorPhase":  "external",
+                   "vendorResultPresent":  false,
+                   "privateLogPresent":  true,
+                   "logSignals":  [
+
+                                  ],
+                   "primarySyntheticFixtureDenied":  "NOT_VERIFIED_MISSING_PATH"
+               }
+}

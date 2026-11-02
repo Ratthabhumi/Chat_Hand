@@ -1,5 +1,52 @@
 # Architecture decision
 
+## Final Unified Workflow Architecture — 2026-11-01
+
+Adopted the final decision from Issue #1 (Research Decision Packet):
+1. **Primary Role Separation:**
+   - **ChatGPT:** Research Architect, Requirements Analyst, Security Reviewer, PR & Issue Manager.
+   - **Codex:** Execution Engineer used strictly when needed for complex multi-file local execution.
+   - **Goal:** Quota fallback enabled — ordinary ChatGPT Chat can operate seamlessly through connected GitHub and Remote Desktop Commander apps without depending on Codex.
+2. **Three Core Capabilities:**
+   - **Lane 1 (Repository Operations):** Connected GitHub app handles repository inspection, file changes, commits, PR review, and CI verification.
+   - **Lane 2 (Windows Host Operations):** Connected Remote Desktop Commander v0.3.1 handles authorized Windows filesystem and process tasks. Requires owner setting "Allow read actions" or "Always ask" in ChatGPT Settings to enforce human-in-the-loop approval.
+   - **Lane 3 (Skills Delivery):** Seven reviewed instruction Skills are referenced directly from pinned GitHub repository sources, eliminating the need to start a local DWB runtime or bridge merely to read instructions.
+3. **DWB MCP Studio — Optional Runtime:**
+   - DWB beta.16, Worker 0.2.50, and Tunnel Client 0.0.11 remain installed in `ChatHandPilot`.
+   - Inspection confirmed main-account DWB is **ABSENT**; no reinstallation is required for the main workflow.
+   - Cloud Tunnel remains **OFF** due to OpenAI Custom MCP write restrictions on Plus/Pro (`HOST_ENTITLEMENT_BLOCKED`).
+4. **Gateway Status:**
+   - `gateway/mcp-filter-gateway.mjs` is an offline evaluation prototype only. It is NOT installed in the active MCP transport path. No unvetted gateway or bridge will be deployed to the internet.
+
+---
+
+V3.2 keeps the same DWB-managed architecture but separates the runtime identity: original-user Codex/repos/Remote/DWB retained for rollback; owner-created pilot is intended to own new app/data/workspace and all live pilot components. No shared node_modules, secrets, browser/SSH/GitHub session or DPAPI migration. Neutral reviewed-source transfer is prepared with narrow ACLs. No live target process or cloud path accepted yet. A restricted identity still needs OS/server controls, residual-risk decision and actual tests.
+
+V3.1 retains DWB + managed Tunnel + Agent Skills. No alternative-agent comparison or parallel transport installed. Owner has Tunnel/key; cloud remains NO-GO because OS/server containment and vulnerability disposition are unfinished. Owner will prepare a separate Windows identity; that is a prerequisite candidate, not an accepted security boundary. Seven reviewed instruction packages, catalog-only media and inactive project-specific designs do not change access authority.
+
+## V3 owner decision — 2026-10-29
+
+DWB MCP Studio beta.16 + its managed OpenAI Secure MCP Tunnel is now the selected unified architecture. This supersedes the V2 preference; do not resume coding-agent comparisons. Preserve the existing Remote Desktop Commander as rollback, without changing its shared configuration or session.
+
+Installation is approved and completed locally, not approved for cloud acceptance by inference. DWB forwards process tools; filesystem denial does not contain shell access. Keep hosted Tunnel stopped until shell is disabled by a verified supported mechanism or an owner-approved OS boundary is established and tested. Dependency advisories must also be triaged. Current status PARTIAL.
+
+Future profiles are prepared as approval requirements, with **no production roots activated**:
+
+| Profile | Activation gate |
+|---|---|
+| ACASH | Read-only root approval, governance preserved, NO_REAL_ORDERS=true, capital USD 0.00; no live/paper/provider execution |
+| -SEED | Explicit isolated worktree, one writer, tests and PR |
+| EIMS | Sanitized diagnostics only; no customer credentials/configurations/device administration |
+| Agent OS | Separately approved narrow root; exclude memory, credentials and backups |
+
+One sandbox/worker, five reviewed MANUAL/ASK skills, two unreviewed retained extras forced MANUAL, no startup or automatic connection. Agent Skills belong to V3. Dashboard remains disconnected pending owner gates. See [AGENT_SKILLS.md](AGENT_SKILLS.md); skill workflow policy is not OS containment.
+
+## V2 update — 2026-10-29
+
+Use two independent routes where verified: ordinary Chat + existing remote connector, and an independent-provider coding agent. Neither is fully accepted yet. Remote read works from Codex, but current directory restrictions fail. Antigravity/OpenCode desktop apps are already installed; evaluate those before adding software. Work shares Codex included allowance, so changing to Work is not a quota reset. See [V2 report](V2_REPORT.md).
+
+## Historical V1 decision — 2026-10-28
+
 **GO: A, existing Codex + GitHub + local tools. Remote extension remains BLOCKED.**
 
 | Option | Complexity / maintenance | Access / sessions | Cost / performance | Decision |

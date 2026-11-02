@@ -1,0 +1,15 @@
+{
+  "observedDateLocal": "2026-10-29",
+  "timezone": "Asia/Bangkok",
+  "command": "powershell -NoProfile -File scripts/Test-Repository.ps1",
+  "exitCode": 0,
+  "jsonParsing": "PASS",
+  "localMarkdownLinks": "PASS",
+  "localSyntheticReadWriteCleanup": "PASS",
+  "evaluatorSelfTestsPassed": 3,
+  "evaluatorSelfTestsFailed": 0,
+  "referenceCorrectnessCasesPassed": 11,
+  "negativeImplementationsRejected": 2,
+  "independentAIProviderBenchmark": "NOT RUN",
+  "scope": "Local artifact validation only. Remote policy failed separately. No model quality, account eligibility or OS isolation claim."
+}
